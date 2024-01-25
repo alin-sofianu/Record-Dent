@@ -3,6 +3,8 @@ import express, { NextFunction, Request, Response } from "express";
 import notesRoutes from "./routes/notes";
 
 const app = express();
+// this sets up the express server to accept json, so I can add a post endpoint
+app.use(express.json())
 
 app.use('/api/notes', notesRoutes)
 
