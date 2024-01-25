@@ -4,10 +4,20 @@ import { RequestHandler } from "express";
 
 export const getNotes: RequestHandler = async (req, res, next) => {
     try {
-        // .exec() is used just because we don't get a promise returned, because we used async await
+        // .exec() is used just because we don't get a promise returned, so we turn it into a real promise
         // on post request it does not ahve to be added, youtuber dunno why
         const notes = await NoteModel.find().exec();
         res.status(200).json(notes);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getSingleNote: RequestHandler = async (req, res, next) => {
+    const noteId = req.params.noteId
+    try {
+        const singleNote = await NoteModel.findById(noteId).exec();
+        res.status(200).json(singleNote)
     } catch (error) {
         next(error)
     }

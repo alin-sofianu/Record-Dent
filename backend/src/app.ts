@@ -1,10 +1,13 @@
 import "dotenv/config" //place this line very first
 import express, { NextFunction, Request, Response } from "express";
 import notesRoutes from "./routes/notes";
+import morgan from "morgan"
 
 const app = express();
-// this sets up the express server to accept json, so I can add a post endpoint
+// this sets up the express server to accept json
 app.use(express.json())
+// this middleware prints a concise log of all endpoints I access
+app.use(morgan("dev"))
 
 app.use('/api/notes', notesRoutes)
 
