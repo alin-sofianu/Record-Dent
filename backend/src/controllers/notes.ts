@@ -1,6 +1,8 @@
+import createHttpError from "http-errors";
 import NoteModel from "../models/note"
 
 import { RequestHandler } from "express";
+import mongoose, { mongo } from "mongoose";
 
 export const getNotes: RequestHandler = async (req, res, next) => {
     try {
@@ -16,18 +18,31 @@ export const getNotes: RequestHandler = async (req, res, next) => {
 export const getSingleNote: RequestHandler = async (req, res, next) => {
     const noteId = req.params.noteId
     try {
+        if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
+
         const singleNote = await NoteModel.findById(noteId).exec();
+        // this error is for when the _id param in the browser url, is the correct shape for an id
+        if (!singleNote) { throw createHttpError(404, "Note not found!(but _id param was of correct shape)") }
+
         res.status(200).json(singleNote)
     } catch (error) {
         next(error)
     }
 }
 
-export const postNotes: RequestHandler = async (req, res, next) => {
+interface CreateNoteBody {
+    title?: string,
+    body?: string
+}
+
+export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
     const title = req.body.title
     const text = req.body.title
 
     try {
+        // a throw leaves the block and goes str8 to the catch block
+        if (!title) { throw createHttpError(400, "Note must have a title") }
+
         const newNote = await NoteModel.create({
             title: title,
             text: text
