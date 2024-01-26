@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 
 // this is an Express err handler, it takes theese 4 args or it will not be recognised as Express err handler.
 // we have to pass types on the args, because TS can't infer them like with res and req objects, because here it could be anything.
+// this is like catch all for errors, if controller does not go into it's own errors, it comes here for the 500 error.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
     console.error(error)

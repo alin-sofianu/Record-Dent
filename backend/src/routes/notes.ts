@@ -4,7 +4,11 @@ import * as NotesController from "../controllers/notes"
 const router = express.Router();
 
 router.get('/', NotesController.getNotes)
+
 router.get('/:noteId', NotesController.getSingleNote)
+
 router.post('/', NotesController.createNote)
+
+router.patch('/:noteId', NotesController.updateNote)
 
 export default router;
