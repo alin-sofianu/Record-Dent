@@ -84,3 +84,22 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         next(error)
     }
 }
+
+export const deleteNote: RequestHandler = async (req, res, next) => {
+    const noteId = req.params.noteId
+
+    try {
+        if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
+        const note = await NoteModel.findByIdAndDelete(noteId).exec();
+
+        if (!note) { throw createHttpError(404, "The note you want to delete was not found!") }
+
+        // await note.remove();
+
+        //use sendStatus instead of status because status itself does not send a response
+        res.sendStatus(204)
+
+    } catch (error) {
+        next(error)
+    }
+}
