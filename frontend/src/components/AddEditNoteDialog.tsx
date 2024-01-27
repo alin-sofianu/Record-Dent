@@ -4,18 +4,35 @@ import { useForm } from "react-hook-form";
 import { NoteInput } from "../network/notes_api";
 import * as NotesApi from "../network/notes_api"
 
-interface AddNoteDialogProps {
+interface AddEditNoteDialogProps {
+    noteToEdit?: Note,
     onDismiss: () => void,
+    // the name onNoteSaved is kept generic so it can be used for both 
+    // creating and updating a note(AddEdit is now the name of this interface)
     onNoteSaved: (note: Note) => void,
 }
 
-const AddNoteDialog = ({ onDismiss, onNoteSaved }: AddNoteDialogProps) => {
+const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialogProps) => {
 
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>();
+    // this construct is from react-hook-form library.
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>({
+        defaultValues: {
+            // noteToEdit?.title returns the title, or undefined if noteToEdit is undefined; instead of error.
+            title: noteToEdit?.title || "",
+            text: noteToEdit?.text || "",
+        }
+    });
 
     async function onSubmit(input: NoteInput) {
         try {
-            const noteResponse = await NotesApi.createNote(input)
+            let noteResponse: Note;
+
+            if (noteToEdit) {
+                noteResponse = await NotesApi.updateNote(noteToEdit._id, input)
+            } else {
+                noteResponse = await NotesApi.createNote(input)
+            }
+
             onNoteSaved(noteResponse)
         } catch (error) {
             console.error(error)
@@ -28,16 +45,16 @@ const AddNoteDialog = ({ onDismiss, onNoteSaved }: AddNoteDialogProps) => {
         // we can do this because it takes no arguments
         <Modal show onHide={onDismiss}>
             <Modal.Header closeButton>
-                <Modal.Title>Adauga pacient</Modal.Title>
+                <Modal.Title>{noteToEdit ? "Actualizeaza pacient" : "Adauga pacient"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form id="addNoteForm" onSubmit={handleSubmit(onSubmit)}>
+                <Form id="addEditNoteForm" onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">
-                        <Form.Label>Adauga date personale</Form.Label>
+                        <Form.Label>Date personale</Form.Label>
                         <Form.Control
                             as='textarea'
                             rows={3}
-                            placeholder="Date personale pacient..."
+                            placeholder="Adauga date personale pacient..."
                             isInvalid={!!errors.title}
                             {...register("title", { required: "Date obligatorii." })}
                         />
@@ -46,11 +63,11 @@ const AddNoteDialog = ({ onDismiss, onNoteSaved }: AddNoteDialogProps) => {
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Adauga detalii importante</Form.Label>
+                        <Form.Label>Detalii importante</Form.Label>
                         <Form.Control
                             as='textarea'
                             rows={5}
-                            placeholder="Detalii importante pacient..."
+                            placeholder="Adauga detalii importante pacient..."
                             {...register("text")}
                         />
                     </Form.Group>
@@ -61,10 +78,10 @@ const AddNoteDialog = ({ onDismiss, onNoteSaved }: AddNoteDialogProps) => {
                     type="submit"
                     // this form="addNoteForm" attribute is to connect the <Button> to the <Form> above, because it lives outside.
                     // this is how you do it if you want to have the <Button> of type submit outside the <Form>.
-                    form="addNoteForm"
+                    form="addEditNoteForm"
                     disabled={isSubmitting}
                 >
-                    Adauga
+                    {noteToEdit ? "Actualizeaza" : "Adauga"}
                 </Button>
             </Modal.Footer>
         </Modal>);
