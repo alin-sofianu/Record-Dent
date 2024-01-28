@@ -291,6 +291,7 @@ export const deleteNote: RequestHandler = async (req, res, next) => {
         // await note.remove();
 
         //use sendStatus instead of status because status itself does not send a response
+        // if you have further on .json(something), then you can use send()
         res.sendStatus(204)
 
     } catch (error) {

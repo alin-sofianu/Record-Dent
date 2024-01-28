@@ -1,8 +1,13 @@
 import "dotenv/config" //place this line very first
 import express, { NextFunction, Request, Response } from "express";
+// can I rename on the fly, in import, a default export? here the export is router in the ./routes/notes
 import notesRoutes from "./routes/notes";
+import usersRoutes from "./routes/users";
 import morgan from "morgan"
 import createHttpError, { isHttpError } from "http-errors";
+import session from "express-session"
+import env from "./util/validateEnv"
+import MongoStore from "connect-mongo";
 
 const app = express();
 // this sets up the express server to accept json
@@ -10,6 +15,23 @@ app.use(express.json())
 // this middleware prints a concise log of all endpoints I access
 app.use(morgan("dev"))
 
+// place is important
+app.use(session({
+    secret: env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000 },
+    // rolling: true, means that for as long as the suer is using the website, cookie will be refresh automatically.
+    rolling: true,
+    // in store is where the session data will be stored; if you pass nothing here it will be stored in memory
+    // so it will work until you restart the server
+    store: MongoStore.create({
+        mongoUrl: env.MONGO_CONNECTION_STRING
+    }),
+}))
+
+
+app.use('/api/users', usersRoutes)
 app.use('/api/notes', notesRoutes)
 
 app.use((req, res, next) => {
