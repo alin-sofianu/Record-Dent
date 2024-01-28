@@ -9,7 +9,6 @@ router.post('/signup', UsersController.signUp)
 
 router.post('/login', UsersController.login)
 
-
 router.post('/logout', UsersController.logout)
 
 
