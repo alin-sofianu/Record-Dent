@@ -22,7 +22,8 @@ const NavBarLoggedInView = ({ user, onLogoutSuccessful }: NavBarLoggedInViewProp
     return (
         <>
             <Navbar.Text className="me-2">
-                Signed in as: {user.username}
+                {/* Signed in as: {user.username} */}
+                Otilia H.
             </Navbar.Text>
             <Button onClick={logout}>Log out</Button>
         </>
