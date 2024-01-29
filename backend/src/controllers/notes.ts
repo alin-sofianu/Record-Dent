@@ -3,12 +3,17 @@ import NoteModel from "../models/note"
 
 import { RequestHandler } from "express";
 import mongoose from "mongoose";
+import { assertIsDefined } from "../util/assertIsdefined";
 
 export const getNotes: RequestHandler = async (req, res, next) => {
+    const authenticatedUserId = req.session.userId;
+
     try {
+        assertIsDefined(authenticatedUserId);
+
         // .exec() is used just because we don't get a promise returned, so we turn it into a real promise
         // on post request it does not ahve to be added, youtuber dunno why
-        const notes = await NoteModel.find().exec();
+        const notes = await NoteModel.find({ userId: authenticatedUserId }).exec();
         res.status(200).json(notes);
     } catch (error) {
         next(error)
@@ -17,12 +22,19 @@ export const getNotes: RequestHandler = async (req, res, next) => {
 
 export const getSingleNote: RequestHandler = async (req, res, next) => {
     const noteId = req.params.noteId
+    const authenticatedUserId = req.session.userId;
+
     try {
+        assertIsDefined(authenticatedUserId);
+
         if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
 
         const singleNote = await NoteModel.findById(noteId).exec();
         // this error is for when the _id param in the browser url, is the correct shape for an id
         if (!singleNote) { throw createHttpError(404, "Note not found!(but _id param was of correct shape)") }
+        if (!singleNote.userId.equals(authenticatedUserId)) {
+            throw createHttpError(401, "You cannot access this note");
+        }
 
         res.status(200).json(singleNote)
     } catch (error) {
@@ -68,6 +80,8 @@ interface CreateNoteBody {
 }
 
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
+    const authenticatedUserId = req.session.userId;
+
     const title = req.body.title
     const text = req.body.text
     const sdmi = req.body.sdmi
@@ -105,10 +119,13 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
 
 
     try {
+        assertIsDefined(authenticatedUserId);
+
         // a throw leaves the block and goes str8 to the catch block
         if (!title) { throw createHttpError(400, "Note must have a title") }
 
         const newNote = await NoteModel.create({
+            userId: authenticatedUserId,
             title: title,
             text: text,
             sdmi: sdmi,
@@ -193,6 +210,8 @@ interface updateNoteBody {
 }
 
 export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBody, unknown> = async (req, res, next) => {
+    const authenticatedUserId = req.session.userId;
+
     const noteId = req.params.noteId
     const newTitle = req.body.title
     const newText = req.body.text
@@ -229,12 +248,16 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newJdinci = req.body.jdinci
     const newJdincii = req.body.jdincii
     try {
+        assertIsDefined(authenticatedUserId);
+
         if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
         if (!newTitle) { throw createHttpError(400, "Note must have a title") }
 
         const note = await NoteModel.findById(noteId).exec()
         if (!note) { throw createHttpError(404, "Note not found!(but _id param was of correct shape)") }
-
+        if (!note.userId.equals(authenticatedUserId)) {
+            throw createHttpError(401, "You cannot access this note");
+        }
         // update the note
         note.title = newTitle;
         note.text = newText;
@@ -279,22 +302,56 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     }
 }
 
+// export const deleteNote: RequestHandler = async (req, res, next) => {
+//     const noteId = req.params.noteId
+//     const authenticatedUserId = req.session.userId;
+
+//     try {
+//         assertIsDefined(authenticatedUserId);
+
+//         if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
+//         const note = await NoteModel.findByIdAndDelete(noteId).exec();
+
+//         if (!note) { throw createHttpError(404, "The note you want to delete was not found!") }
+//         if (!note.userId.equals(authenticatedUserId)) {
+//             throw createHttpError(401, "You cannot access this note");
+//         }
+//         //await note.remove();
+
+//         //use sendStatus instead of status because status itself does not send a response
+//         // if you have further on .json(something), then you can use send()
+//         res.sendStatus(204)
+
+//     } catch (error) {
+//         next(error)
+//     }
+// }
+
 export const deleteNote: RequestHandler = async (req, res, next) => {
-    const noteId = req.params.noteId
+    const noteId = req.params.noteId;
+    const authenticatedUserId = req.session.userId;
 
     try {
-        if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
-        const note = await NoteModel.findByIdAndDelete(noteId).exec();
+        assertIsDefined(authenticatedUserId);
 
-        if (!note) { throw createHttpError(404, "The note you want to delete was not found!") }
+        if (!mongoose.isValidObjectId(noteId)) {
+            throw createHttpError(400, "Invalid note id");
+        }
+
+        const note = await NoteModel.findById(noteId).exec();
+
+        if (!note) {
+            throw createHttpError(404, "Note not found");
+        }
+
+        if (!note.userId.equals(authenticatedUserId)) {
+            throw createHttpError(401, "You cannot access this note");
+        }
 
         // await note.remove();
 
-        //use sendStatus instead of status because status itself does not send a response
-        // if you have further on .json(something), then you can use send()
-        res.sendStatus(204)
-
+        res.sendStatus(204);
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
