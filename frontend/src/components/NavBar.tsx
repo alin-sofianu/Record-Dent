@@ -3,7 +3,8 @@ import { User } from "../models/user";
 import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.ico"
+import logo from "../images/logo.png"
+
 interface NavBarProps {
     loggedInUser: User | null,
     onSignUpClicked: () => void,
@@ -15,9 +16,9 @@ const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccess
     return (
         <Navbar bg="primary" variant="dark" expand="sm" sticky="top">
             <Container>
-                <Navbar.Brand as={Link} to="/">
-                    <img src={logo} alt="logo" width={26} height={26} />
-                    RecordDent
+                <Navbar.Brand as={Link} to="/" style={{ display: 'flex' }}>
+                    <img src={logo} alt="logo" width={35} height={35} />
+                    <h4 style={{ margin: 'auto 7px' }}>RecordDent</h4>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar">
