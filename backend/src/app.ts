@@ -9,8 +9,13 @@ import session from "express-session"
 import env from "./util/validateEnv"
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
+import cors from "cors"
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
+
 // this sets up the express server to accept json
 app.use(express.json())
 // this middleware prints a concise log of all endpoints I access
