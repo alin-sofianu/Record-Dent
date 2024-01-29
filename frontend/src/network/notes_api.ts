@@ -22,7 +22,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 // start of users stuff
 ///////////////////////////
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://record-dent.onrender.com/api/users", { method: "GET" });
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET" });
     return response.json();
 }
 
@@ -33,7 +33,7 @@ export interface SignUpCredentials {
 }
 
 export async function signUp(credentials: SignUpCredentials): Promise<User> {
-    const response = await fetchData("/api/users/signup",
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/users/signup",
         {
             method: "POST",
             headers: {
@@ -50,7 +50,7 @@ export interface LoginCredentials {
 }
 
 export async function login(credentials: LoginCredentials): Promise<User> {
-    const response = await fetchData("/api/users/login",
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/users/login",
         {
             method: "POST",
             headers: {
@@ -62,7 +62,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
 }
 
 export async function logout() {
-    await fetchData("/api/users/logout", { method: "POST" });
+    await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST" });
 }
 ///////////////////////////
 // end of user stuff
