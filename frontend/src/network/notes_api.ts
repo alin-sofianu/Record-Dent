@@ -68,7 +68,7 @@ export async function logout() {
 // end of user stuff
 ///////////////////////////
 export async function fetchNotes(): Promise<Note[]> {
-    const response = await fetchData("/api/notes", { method: "GET" })
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET" })
 
     // this means return the json body of the response
     return response.json()
@@ -113,7 +113,7 @@ export interface NoteInput {
 
 export async function createNote(note: NoteInput): Promise<Note> {
 
-    const response = await fetchData("/api/notes",
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes",
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -123,7 +123,7 @@ export async function createNote(note: NoteInput): Promise<Note> {
 }
 
 export async function updateNote(noteId: String, note: NoteInput): Promise<Note> {
-    const response = await fetchData("/api/notes/" + noteId,
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId,
         {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -133,5 +133,5 @@ export async function updateNote(noteId: String, note: NoteInput): Promise<Note>
 }
 
 export async function deleteNote(noteId: string) {
-    await fetchData("/api/notes/" + noteId, { method: "DELETE" })
+    await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId, { method: "DELETE" })
 }
