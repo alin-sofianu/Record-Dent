@@ -1,5 +1,5 @@
-// const allowedOrigins = [
-//     'https://record-dent.onrender.com/'
-// ]
+const allowedOrigins = [
+    'https://record-dent.onrender.com/'
+]
 
-// module.exports = allowedOrigins
+module.exports = allowedOrigins

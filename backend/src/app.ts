@@ -10,11 +10,12 @@ import env from "./util/validateEnv"
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 import cors from "cors"
+import corsOptions from "./config/corsOptions"
 
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors());
+// Enable CORS. for all routes
+app.use(cors(corsOptions));
 
 // this sets up the express server to accept json
 app.use(express.json())
