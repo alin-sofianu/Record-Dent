@@ -9,7 +9,7 @@ import session from "express-session"
 import env from "./util/validateEnv"
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
-// import cors from "cors"
+import cors from "cors"
 // import corsOptions from "./config/corsOptions.js"
 // // eslint-disable-next-line @typescript-eslint/no-var-requires
 // import corsOptions from './config/corsOptions';
@@ -22,7 +22,7 @@ const app = express();
 //     origin: 'https://record-dent.onrender.com/',
 //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
-// app.use(cors());
+app.use(cors());
 
 // this sets up the express server to accept json
 app.use(express.json())
