@@ -22,7 +22,12 @@ const app = express();
 //     origin: 'https://record-dent.onrender.com/',
 //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
-app.use(cors());
+const corsOptions = {
+    origin: 'https://record-dent.onrender.com',
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 // this sets up the express server to accept json
 app.use(express.json())
