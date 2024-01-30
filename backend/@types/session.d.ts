@@ -5,11 +5,10 @@
 // and make it: "typeRoots": [ "node_modules/@types", "@types" ]
 // then add at the bottom, after }, "ts-node": { "files": true }
 
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
-// "declare module xxx" is like "import xxx from xxx" in JS, but for TS when importing third party libs
 declare module "express-session" {
     interface SessionData {
-        userId: mongoose.Types.ObjectId
+        userId: mongoose.Types.ObjectId;
     }
 }
