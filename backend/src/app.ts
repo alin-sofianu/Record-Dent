@@ -23,7 +23,7 @@ const app = express();
 //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 const corsOptions = {
-    origin: 'https://record-dent.onrender.com/',
+    origin: 'https://record-dent.onrender.com',
     methods: ["POST", "GET", "PATCH", "DELETE"],
     optionsSuccessStatus: 200,
 };
