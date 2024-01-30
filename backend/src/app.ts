@@ -52,7 +52,7 @@ app.use(session({
 
 
 app.use('/api/users', usersRoutes)
-app.use('/api/notes', requiresAuth, notesRoutes)
+app.use('/api/notes', notesRoutes)
 
 app.use((req, res, next) => {
     next(createHttpError(404, "Endpoint not found!!!!"))
