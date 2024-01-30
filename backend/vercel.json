@@ -4,14 +4,6 @@
         {
             "src": "*.ts",
             "use": "@vercel/node"
-        },
-        {
-            "routes": [
-                {
-                    "src": "/(.*)",
-                    "dest": "/"
-                }
-            ]
         }
     ]
 }
