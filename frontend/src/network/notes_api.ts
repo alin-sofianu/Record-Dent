@@ -22,7 +22,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 // start of users stuff
 ///////////////////////////
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET" });
+    const response = await fetchData("https://record-dent-backend.onrender.com", { method: "GET" });
     return response.json();
 }
 
