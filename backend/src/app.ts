@@ -15,6 +15,7 @@ const app = express();
 const corsOptions = {
     origin: 'https://record-dent.onrender.com',
     optionsSuccessStatus: 200,
+    credentials: true
 };
 
 app.use(cors(corsOptions));
