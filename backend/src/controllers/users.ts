@@ -75,7 +75,7 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
         if (!user) {
             throw createHttpError(401, "Invalid credentials");
         }
-        // @ts-expect-error fajsdlfkjds
+        // @ts-expect-error ts vrea description aici
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch) {
