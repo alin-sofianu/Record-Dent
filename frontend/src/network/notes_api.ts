@@ -22,7 +22,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 // start of users stuff
 ///////////////////////////
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET" });
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET", credentials: "include" });
     return response.json();
 }
 
@@ -57,18 +57,19 @@ export async function login(credentials: LoginCredentials): Promise<User> {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(credentials),
+            credentials: "include",
         });
     return response.json();
 }
 
 export async function logout() {
-    await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST" });
+    await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST", credentials: "include" });
 }
 ///////////////////////////
 // end of user stuff
 ///////////////////////////
 export async function fetchNotes(): Promise<Note[]> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET" })
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
 
     // this means return the json body of the response
     return response.json()
@@ -117,21 +118,26 @@ export async function createNote(note: NoteInput): Promise<Note> {
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(note)
+            body: JSON.stringify(note),
+            credentials: "include",
         })
     return response.json()
 }
 
 export async function updateNote(noteId: String, note: NoteInput): Promise<Note> {
-    const response = await fetchData("/api/notes/" + noteId,
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId,
         {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(note)
+            body: JSON.stringify(note),
+            credentials: "include",
         })
     return response.json()
 }
 
 export async function deleteNote(noteId: string) {
-    await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId, { method: "DELETE" })
+    await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId, {
+        method: "DELETE",
+        credentials: "include"
+    })
 }
