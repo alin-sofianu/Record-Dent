@@ -12,7 +12,12 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://record-dent.onrender.com',
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
 
