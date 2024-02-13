@@ -1,7 +1,9 @@
 export interface Note {
     _id: string,
-    title: string,
-    text?: string,
+    firstname: string,
+    lastname: string,
+    phoneno: string,
+    importantdetails?: string,
     sdmi?: string,
     sdmii?: string,
     sdmiii?: string,

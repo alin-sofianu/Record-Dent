@@ -9,6 +9,7 @@ import canine from "../images/canine.png"
 import molar from "../images/molar.png"
 import premolar from "../images/premolar.png"
 import incisor from "../images/incisor.png"
+import { MdAddTask } from "react-icons/md"
 
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
@@ -24,8 +25,11 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>({
         defaultValues: {
             // noteToEdit?.title returns the title, or undefined if noteToEdit is undefined; instead of error.
-            title: noteToEdit?.title || "",
-            text: noteToEdit?.text || "",
+            // title: noteToEdit?.title || "",
+            firstname: noteToEdit?.firstname || "",
+            lastname: noteToEdit?.lastname || "",
+            phoneno: noteToEdit?.phoneno || "",
+            importantdetails: noteToEdit?.importantdetails || "",
             sdmi: noteToEdit?.sdmi || "",
             sdmii: noteToEdit?.sdmii || "",
             sdmiii: noteToEdit?.sdmiii || "",
@@ -84,7 +88,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
         // we can do this because it takes no arguments
         <Modal
             show
-            size="xl"
+            fullscreen
             onHide={onDismiss}
             aria-labelledby="example-custom-modal-styling-title"
             centered
@@ -96,16 +100,38 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                 <Form id="addEditNoteForm" onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">
                         <Form.Label><h6 className="fw-bold">Date personale</h6></Form.Label>
-                        <Form.Control
-                            as='textarea'
-                            rows={3}
-                            placeholder="Adauga date personale pacient..."
-                            isInvalid={!!errors.title}
-                            {...register("title", { required: "Date obligatorii." })}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.title?.message}
-                        </Form.Control.Feedback>
+                        <Row>
+                            <Col>
+                                <Form.Control
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="Nume"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("firstname", { required: "Date obligatorii." })}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="Prenume"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("lastname")}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="Numar de telefon"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("phoneno")}
+                                />
+                            </Col>
+                            <Form.Control.Feedback type="invalid">
+                                {errors.firstname?.message}
+                            </Form.Control.Feedback>
+                        </Row>
                     </Form.Group>
 
                     <Form.Group className="mb-4">
@@ -114,12 +140,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             as='textarea'
                             rows={3}
                             placeholder="Adauga detalii importante pacient..."
-                            {...register("text")}
+                            {...register("importantdetails")}
                         />
                     </Form.Group>
 
-                    <Container fluid="md" style={{ padding: "0px" }}>
-                        <h5 className="fw-bold mt-5">Maxilar - dreapta</h5>
+                    <Container fluid="md" style={{ padding: "0px", maxWidth: '100%' }}>
+                        <h5 className="fw-bold mt-5">Cadran I</h5>
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -128,6 +154,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-4 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdmi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -148,6 +184,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdmii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -168,6 +214,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdmiii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -188,6 +244,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdpi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -210,6 +276,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdpii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -230,6 +306,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdc?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -250,6 +336,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdinci?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -270,6 +366,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sdincii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -288,7 +394,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>
-                        <h5 className="fw-bold mt-3">Maxilar - stanga</h5>
+                        <h5 className="fw-bold mt-3">Cadran II</h5>
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -297,6 +403,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssmi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -317,6 +433,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssmii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -337,6 +463,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssmiii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -357,6 +493,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sspi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -379,6 +525,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.sspii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -399,6 +555,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssc?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -419,6 +585,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssinci?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -439,6 +615,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.ssincii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -457,7 +643,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>
-                        <h5 className="fw-bold mt-3">Mandibula - dreapta</h5>
+                        <h5 className="fw-bold mt-3">Cadran IV</h5>
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -466,6 +652,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdmi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -486,6 +682,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdmii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -506,6 +712,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdmiii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -526,6 +742,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdpi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -548,6 +774,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdpii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -568,6 +804,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdc?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -588,6 +834,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdinci?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -608,6 +864,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jdincii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -626,7 +892,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>
-                        <h5 className="fw-bold mt-3">Mandibula - stanga</h5>
+                        <h5 className="fw-bold mt-3">Cadran III</h5>
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -635,6 +901,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsmi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -655,6 +931,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsmii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -675,6 +961,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsmiii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -695,6 +991,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jspi?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -717,6 +1023,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jspii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -737,6 +1053,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsc?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -757,6 +1083,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsinci?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -777,6 +1113,16 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.jsincii?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"

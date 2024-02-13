@@ -2,8 +2,10 @@ import { InferSchemaType, Schema, model } from "mongoose"
 
 const noteSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, required: true },
-    title: { type: String, required: true },
-    text: { type: String },
+    firstname: { type: String, required: true },
+    lastname: { type: String },
+    phoneno: { type: String },
+    importantdetails: { type: String },
     sdmi: { type: String },
     sdmii: { type: String },
     sdmiii: { type: String },

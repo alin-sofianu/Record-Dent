@@ -76,8 +76,10 @@ export async function fetchNotes(): Promise<Note[]> {
 }
 
 export interface NoteInput {
-    title: string,
-    text?: string,
+    firstname: string,
+    lastname: string,
+    phoneno: string,
+    importantdetails?: string,
     sdmi?: string,
     sdmii?: string,
     sdmiii?: string,

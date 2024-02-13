@@ -43,8 +43,10 @@ export const getSingleNote: RequestHandler = async (req, res, next) => {
 }
 
 interface CreateNoteBody {
-    title?: string,
-    text?: string,
+    firstname?: string,
+    lastname?: string,
+    phoneno?: string,
+    importantdetails?: string,
     sdmi?: string,
     sdmii?: string,
     sdmiii?: string,
@@ -82,8 +84,10 @@ interface CreateNoteBody {
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
     const authenticatedUserId = req.session.userId;
 
-    const title = req.body.title
-    const text = req.body.text
+    const firstname = req.body.firstname
+    const lastname = req.body.lastname
+    const phoneno = req.body.phoneno
+    const importantdetails = req.body.importantdetails
     const sdmi = req.body.sdmi
     const sdmii = req.body.sdmii
     const sdmiii = req.body.sdmiii
@@ -122,12 +126,14 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
         assertIsDefined(authenticatedUserId);
 
         // a throw leaves the block and goes str8 to the catch block
-        if (!title) { throw createHttpError(400, "Note must have a title") }
+        if (!firstname) { throw createHttpError(400, "Note must have a first name") }
 
         const newNote = await NoteModel.create({
             userId: authenticatedUserId,
-            title: title,
-            text: text,
+            firstname: firstname,
+            lastname: lastname,
+            phoneno: phoneno,
+            importantdetails: importantdetails,
             sdmi: sdmi,
             sdmii: sdmii,
             sdmiii: sdmiii,
@@ -173,8 +179,10 @@ interface updateNoteParams {
 }
 
 interface updateNoteBody {
-    title?: string,
-    text?: string,
+    firstname?: string,
+    lastname?: string,
+    phoneno?: string,
+    importantdetails?: string,
     sdmi?: string,
     sdmii?: string,
     sdmiii?: string,
@@ -213,8 +221,10 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const authenticatedUserId = req.session.userId;
 
     const noteId = req.params.noteId
-    const newTitle = req.body.title
-    const newText = req.body.text
+    const newFirstname = req.body.firstname
+    const newLastname = req.body.lastname
+    const newPhoneno = req.body.phoneno
+    const newImportantdetails = req.body.importantdetails
     const newSdmi = req.body.sdmi
     const newSdmii = req.body.sdmii
     const newSdmiii = req.body.sdmiii
@@ -251,7 +261,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         assertIsDefined(authenticatedUserId);
 
         if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
-        if (!newTitle) { throw createHttpError(400, "Note must have a title") }
+        if (!newFirstname) { throw createHttpError(400, "Note must have a title aka first name") }
 
         const note = await NoteModel.findById(noteId).exec()
         if (!note) { throw createHttpError(404, "Note not found!(but _id param was of correct shape)") }
@@ -259,8 +269,10 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
             throw createHttpError(401, "You cannot access this note");
         }
         // update the note
-        note.title = newTitle;
-        note.text = newText;
+        note.firstname = newFirstname;
+        note.lastname = newLastname;
+        note.phoneno = newPhoneno;
+        note.importantdetails = newImportantdetails;
         note.sdmi = newSdmi;
         note.sdmii = newSdmii;
         note.sdmiii = newSdmiii;
@@ -301,31 +313,6 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         next(error)
     }
 }
-
-// export const deleteNote: RequestHandler = async (req, res, next) => {
-//     const noteId = req.params.noteId
-//     const authenticatedUserId = req.session.userId;
-
-//     try {
-//         assertIsDefined(authenticatedUserId);
-
-//         if (!mongoose.isValidObjectId(noteId)) { throw createHttpError(400, "Note _id param is invalid(shape not correct)") }
-//         const note = await NoteModel.findByIdAndDelete(noteId).exec();
-
-//         if (!note) { throw createHttpError(404, "The note you want to delete was not found!") }
-//         if (!note.userId.equals(authenticatedUserId)) {
-//             throw createHttpError(401, "You cannot access this note");
-//         }
-//         //await note.remove();
-
-//         //use sendStatus instead of status because status itself does not send a response
-//         // if you have further on .json(something), then you can use send()
-//         res.sendStatus(204)
-
-//     } catch (error) {
-//         next(error)
-//     }
-// }
 
 export const deleteNote: RequestHandler = async (req, res, next) => {
     const noteId = req.params.noteId;

@@ -13,7 +13,7 @@ interface NoteProps {
 }
 
 const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps) => {
-    const { title, text, createdAt, updatedAt } = note;
+    const { firstname, lastname, phoneno, importantdetails, createdAt, updatedAt } = note;
 
     let createdUpdatedText: string;
     if (updatedAt > createdAt) {
@@ -29,7 +29,7 @@ const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps
         >
             <Card.Body className={styles.cardBody}>
                 <Card.Title className={`${styleUtils.flexCenter}`}>
-                    {title}
+                    {firstname} {lastname}
                     <MdDeleteForever
                         className="ms-auto"
                         color="maroon"
@@ -40,7 +40,8 @@ const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps
                         }}
                     />
                 </Card.Title>
-                <Card.Text className={styles.cardText}>{text}</Card.Text>
+                <Card.Text className={styles.cardText}>Telefon: {phoneno}</Card.Text>
+                <Card.Text className={styles.cardText}>{importantdetails}</Card.Text>
             </Card.Body>
             <Card.Footer>{createdUpdatedText}</Card.Footer>
         </Card>
