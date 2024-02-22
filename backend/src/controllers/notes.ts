@@ -47,6 +47,9 @@ interface CreateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
+    datefirstvisit?: string,
+    cnp?: string,
+    reason?: string,
     c1a?: string,
     c1b?: string,
     c1c?: string,
@@ -88,6 +91,9 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const lastname = req.body.lastname
     const phoneno = req.body.phoneno
     const importantdetails = req.body.importantdetails
+    const datefirstvisit = req.body.datefirstvisit
+    const cnp = req.body.cnp
+    const reason = req.body.reason
     const c1a = req.body.c1a
     const c1b = req.body.c1b
     const c1c = req.body.c1c
@@ -134,6 +140,9 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             lastname: lastname,
             phoneno: phoneno,
             importantdetails: importantdetails,
+            datefirstvisit: datefirstvisit,
+            cnp: cnp,
+            reason: reason,
             c1a: c1a,
             c1b: c1b,
             c1c: c1c,
@@ -183,6 +192,9 @@ interface updateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
+    datefirstvisit?: string,
+    cnp?: string,
+    reason?: string,
     c1a?: string,
     c1b?: string,
     c1c?: string,
@@ -225,6 +237,9 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newLastname = req.body.lastname
     const newPhoneno = req.body.phoneno
     const newImportantdetails = req.body.importantdetails
+    const newDatefirstvisit = req.body.datefirstvisit
+    const newCnp = req.body.cnp
+    const newReason = req.body.reason
     const newC1a = req.body.c1a
     const newC1b = req.body.c1b
     const newC1c = req.body.c1c
@@ -273,6 +288,9 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.lastname = newLastname;
         note.phoneno = newPhoneno;
         note.importantdetails = newImportantdetails;
+        note.datefirstvisit = newDatefirstvisit;
+        note.cnp = newCnp;
+        note.reason = newReason;
         note.c1a = newC1a;
         note.c1b = newC1b;
         note.c1c = newC1c;

@@ -30,6 +30,9 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             lastname: noteToEdit?.lastname || "",
             phoneno: noteToEdit?.phoneno || "",
             importantdetails: noteToEdit?.importantdetails || "",
+            datefirstvisit: noteToEdit?.datefirstvisit || "",
+            cnp: noteToEdit?.cnp || "",
+            reason: noteToEdit?.reason || "",
             c1a: noteToEdit?.c1a || "",
             c1b: noteToEdit?.c1b || "",
             c1c: noteToEdit?.c1c || "",
@@ -94,12 +97,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             centered
         >
             <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: 'rgb(13, 110, 253)' }}>
-                <Modal.Title>{noteToEdit ? "Actualizeaza pacient" : "Adauga pacient"}</Modal.Title>
+                <Modal.Title>{noteToEdit ? "Actualizează pacient" : "Adaugă pacient"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form id="addEditNoteForm" onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">
-                        <Form.Label><h6 className="fw-bold">Date personale</h6></Form.Label>
+                        <Form.Label><h6 className="fw-bold">Date personale:</h6></Form.Label>
                         <Row>
                             <Col>
                                 <Form.Control
@@ -123,9 +126,27 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 <Form.Control
                                     as='textarea'
                                     rows={1}
-                                    placeholder="Numar de telefon"
+                                    placeholder="Număr de telefon"
                                     isInvalid={!!errors.firstname}
                                     {...register("phoneno")}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="CNP"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("cnp")}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="Dată prima vizită"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("datefirstvisit")}
                                 />
                             </Col>
                             <Form.Control.Feedback type="invalid">
@@ -135,11 +156,21 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     </Form.Group>
 
                     <Form.Group className="mb-4">
-                        <Form.Label><h6 className="fw-bold">Detalii importante</h6></Form.Label>
+                        <Form.Label><h6 className="fw-bold">Motivele prezentării:</h6></Form.Label>
                         <Form.Control
                             as='textarea'
                             rows={3}
-                            placeholder="Adauga detalii importante pacient..."
+                            placeholder="Adaugă motivele prezentării..."
+                            {...register("reason")}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-4">
+                        <Form.Label><h6 className="fw-bold">Detalii importante:</h6></Form.Label>
+                        <Form.Control
+                            as='textarea'
+                            rows={3}
+                            placeholder="Adaugă detalii importante pacient..."
                             {...register("importantdetails")}
                         />
                     </Form.Group>
@@ -1154,7 +1185,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     form="addEditNoteForm"
                     disabled={isSubmitting}
                 >
-                    {noteToEdit ? "Actualizeaza" : "Adauga"}
+                    {noteToEdit ? "Actualizează" : "Adaugă"}
                 </Button>
             </Modal.Footer>
         </Modal >);
