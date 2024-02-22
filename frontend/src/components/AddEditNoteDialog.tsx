@@ -10,7 +10,7 @@ import molar from "../images/molar.png"
 import premolar from "../images/premolar.png"
 import incisor from "../images/incisor.png"
 import { MdAddTask } from "react-icons/md"
-
+// import GroupTeethInput from "./form/GroupTeethInput";
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
     onDismiss: () => void,
@@ -30,38 +30,38 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             lastname: noteToEdit?.lastname || "",
             phoneno: noteToEdit?.phoneno || "",
             importantdetails: noteToEdit?.importantdetails || "",
-            sdmi: noteToEdit?.sdmi || "",
-            sdmii: noteToEdit?.sdmii || "",
-            sdmiii: noteToEdit?.sdmiii || "",
-            sdpi: noteToEdit?.sdpi || "",
-            sdpii: noteToEdit?.sdpii || "",
-            sdc: noteToEdit?.sdc || "",
-            sdinci: noteToEdit?.sdinci || "",
-            sdincii: noteToEdit?.sdincii || "",
-            ssmi: noteToEdit?.ssmi || "",
-            ssmii: noteToEdit?.ssmii || "",
-            ssmiii: noteToEdit?.ssmiii || "",
-            sspi: noteToEdit?.sspi || "",
-            sspii: noteToEdit?.sspii || "",
-            ssc: noteToEdit?.ssc || "",
-            ssinci: noteToEdit?.ssinci || "",
-            ssincii: noteToEdit?.ssincii || "",
-            jdmi: noteToEdit?.jdmi || "",
-            jdmii: noteToEdit?.jdmii || "",
-            jdmiii: noteToEdit?.jdmiii || "",
-            jdpi: noteToEdit?.jdpi || "",
-            jdpii: noteToEdit?.jdpii || "",
-            jdc: noteToEdit?.jdc || "",
-            jdinci: noteToEdit?.jdinci || "",
-            jdincii: noteToEdit?.jdincii || "",
-            jsmi: noteToEdit?.jsmi || "",
-            jsmii: noteToEdit?.jsmii || "",
-            jsmiii: noteToEdit?.jsmiii || "",
-            jspi: noteToEdit?.jspi || "",
-            jspii: noteToEdit?.jspii || "",
-            jsc: noteToEdit?.jsc || "",
-            jsinci: noteToEdit?.jsinci || "",
-            jsincii: noteToEdit?.jsincii || "",
+            c1a: noteToEdit?.c1a || "",
+            c1b: noteToEdit?.c1b || "",
+            c1c: noteToEdit?.c1c || "",
+            c1d: noteToEdit?.c1d || "",
+            c1e: noteToEdit?.c1e || "",
+            c1f: noteToEdit?.c1f || "",
+            c1g: noteToEdit?.c1g || "",
+            c1h: noteToEdit?.c1h || "",
+            c2a: noteToEdit?.c2a || "",
+            c2b: noteToEdit?.c2b || "",
+            c2c: noteToEdit?.c2c || "",
+            c2d: noteToEdit?.c2d || "",
+            c2e: noteToEdit?.c2e || "",
+            c2f: noteToEdit?.c2f || "",
+            c2g: noteToEdit?.c2g || "",
+            c2h: noteToEdit?.c2h || "",
+            c3a: noteToEdit?.c3a || "",
+            c3b: noteToEdit?.c3b || "",
+            c3c: noteToEdit?.c3c || "",
+            c3d: noteToEdit?.c3d || "",
+            c3e: noteToEdit?.c3e || "",
+            c3f: noteToEdit?.c3f || "",
+            c3g: noteToEdit?.c3g || "",
+            c3h: noteToEdit?.c3h || "",
+            c4a: noteToEdit?.c4a || "",
+            c4b: noteToEdit?.c4b || "",
+            c4c: noteToEdit?.c4c || "",
+            c4d: noteToEdit?.c4d || "",
+            c4e: noteToEdit?.c4e || "",
+            c4f: noteToEdit?.c4f || "",
+            c4g: noteToEdit?.c4g || "",
+            c4h: noteToEdit?.c4h || "",
 
         }
     });
@@ -146,6 +146,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
 
                     <Container fluid="md" style={{ padding: "0px", maxWidth: '100%' }}>
                         <h5 className="fw-bold mt-5">Cadran I</h5>
+
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -154,7 +155,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-4 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdmi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1a?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -173,7 +174,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("sdmi")}
+                                                        {...register("c1a")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -184,7 +185,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdmii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1b?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -203,7 +204,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("sdmii")}
+                                                        {...register("c1b")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -214,7 +215,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdmiii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1c?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -233,7 +234,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
-                                                        {...register("sdmiii")}
+                                                        {...register("c1c")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -244,7 +245,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdpi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1d?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -263,7 +264,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar I"
-                                                        {...register("sdpi")}
+                                                        {...register("c1d")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -276,7 +277,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdpii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1e?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -295,7 +296,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar II"
-                                                        {...register("sdpii")}
+                                                        {...register("c1e")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -306,7 +307,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdc?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -325,7 +326,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Canin"
-                                                        {...register("sdc")}
+                                                        {...register("c1f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -336,7 +337,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdinci?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -355,7 +356,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv I"
-                                                        {...register("sdinci")}
+                                                        {...register("c1g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -366,7 +367,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sdincii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -385,7 +386,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv II"
-                                                        {...register("sdincii")}
+                                                        {...register("c1h")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -403,7 +404,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssmi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2a?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -422,7 +423,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("ssmi")}
+                                                        {...register("c2a")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -433,7 +434,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssmii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2b?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -452,7 +453,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("ssmii")}
+                                                        {...register("c2b")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -463,7 +464,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssmiii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2c?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -482,7 +483,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
-                                                        {...register("ssmiii")}
+                                                        {...register("c2c")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -493,7 +494,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sspi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2d?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -512,7 +513,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar I"
-                                                        {...register("sspi")}
+                                                        {...register("c2d")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -525,7 +526,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.sspii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2e?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -544,7 +545,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar II"
-                                                        {...register("sspii")}
+                                                        {...register("c2e")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -555,7 +556,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssc?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -574,7 +575,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Canine"
-                                                        {...register("ssc")}
+                                                        {...register("c2f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -585,7 +586,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssinci?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -604,7 +605,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv I"
-                                                        {...register("ssinci")}
+                                                        {...register("c2g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -615,7 +616,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.ssincii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -634,7 +635,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv II"
-                                                        {...register("ssincii")}
+                                                        {...register("c2h")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -652,7 +653,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdmi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3a?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -671,7 +672,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("jdmi")}
+                                                        {...register("c3a")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -682,7 +683,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdmii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3b?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -701,7 +702,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("jdmii")}
+                                                        {...register("c3b")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -712,7 +713,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdmiii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3c?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -731,7 +732,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
-                                                        {...register("jdmiii")}
+                                                        {...register("c3c")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -742,7 +743,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdpi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3d?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -761,7 +762,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar I"
-                                                        {...register("jdpi")}
+                                                        {...register("c3d")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -774,7 +775,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdpii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3e?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -793,7 +794,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar II"
-                                                        {...register("jdpii")}
+                                                        {...register("c3e")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -804,7 +805,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdc?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -823,7 +824,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Canin"
-                                                        {...register("jdc")}
+                                                        {...register("c3f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -834,7 +835,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdinci?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -853,7 +854,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv I"
-                                                        {...register("jdinci")}
+                                                        {...register("c3g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -864,7 +865,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jdincii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -883,7 +884,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv II"
-                                                        {...register("jdincii")}
+                                                        {...register("c3h")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -901,7 +902,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsmi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4a?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -920,7 +921,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("jsmi")}
+                                                        {...register("c4a")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -931,7 +932,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsmii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4b?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -950,7 +951,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("jsmii")}
+                                                        {...register("c4b")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -961,7 +962,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsmiii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4c?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -980,7 +981,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
-                                                        {...register("jsmiii")}
+                                                        {...register("c4c")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -991,7 +992,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jspi?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4d?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -1010,7 +1011,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar I"
-                                                        {...register("jspi")}
+                                                        {...register("c4d")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -1023,7 +1024,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jspii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4e?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -1042,7 +1043,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Premolar II"
-                                                        {...register("jspii")}
+                                                        {...register("c4e")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -1053,7 +1054,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsc?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -1072,7 +1073,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Canin"
-                                                        {...register("jsc")}
+                                                        {...register("c4f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -1083,7 +1084,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsinci?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -1102,7 +1103,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv I"
-                                                        {...register("jsinci")}
+                                                        {...register("c4g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -1113,7 +1114,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.jsincii?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c4h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -1132,7 +1133,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Incisiv II"
-                                                        {...register("jsincii")}
+                                                        {...register("c4h")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>

@@ -47,38 +47,38 @@ interface CreateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
-    sdmi?: string,
-    sdmii?: string,
-    sdmiii?: string,
-    sdpi?: string,
-    sdpii?: string,
-    sdc?: string,
-    sdinci?: string,
-    sdincii?: string,
-    ssmi?: string,
-    ssmii?: string,
-    ssmiii?: string,
-    sspi?: string,
-    sspii?: string,
-    ssc?: string,
-    ssinci?: string,
-    ssincii?: string,
-    jdmi?: string,
-    jdmii?: string,
-    jdmiii?: string,
-    jdpi?: string,
-    jdpii?: string,
-    jdc?: string,
-    jdinci?: string,
-    jdincii?: string,
-    jsmi?: string,
-    jsmii?: string,
-    jsmiii?: string,
-    jspi?: string,
-    jspii?: string,
-    jsc?: string,
-    jsinci?: string,
-    jsincii?: string,
+    c1a?: string,
+    c1b?: string,
+    c1c?: string,
+    c1d?: string,
+    c1e?: string,
+    c1f?: string,
+    c1g?: string,
+    c1h?: string,
+    c2a?: string,
+    c2b?: string,
+    c2c?: string,
+    c2d?: string,
+    c2e?: string,
+    c2f?: string,
+    c2g?: string,
+    c2h?: string,
+    c3a?: string,
+    c3b?: string,
+    c3c?: string,
+    c3d?: string,
+    c3e?: string,
+    c3f?: string,
+    c3g?: string,
+    c3h?: string,
+    c4a?: string,
+    c4b?: string,
+    c4c?: string,
+    c4d?: string,
+    c4e?: string,
+    c4f?: string,
+    c4g?: string,
+    c4h?: string,
 }
 
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
@@ -88,38 +88,38 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const lastname = req.body.lastname
     const phoneno = req.body.phoneno
     const importantdetails = req.body.importantdetails
-    const sdmi = req.body.sdmi
-    const sdmii = req.body.sdmii
-    const sdmiii = req.body.sdmiii
-    const sdpi = req.body.sdpi
-    const sdpii = req.body.sdpii
-    const sdc = req.body.sdc
-    const sdinci = req.body.sdinci
-    const sdincii = req.body.sdincii
-    const ssmi = req.body.ssmi
-    const ssmii = req.body.ssmii
-    const ssmiii = req.body.ssmiii
-    const sspi = req.body.sspi
-    const sspii = req.body.sspii
-    const ssc = req.body.ssc
-    const ssinci = req.body.ssinci
-    const ssincii = req.body.ssincii
-    const jsmi = req.body.jsmi
-    const jsmii = req.body.jsmii
-    const jsmiii = req.body.jsmiii
-    const jspi = req.body.jspi
-    const jspii = req.body.jspii
-    const jsc = req.body.jsc
-    const jsinci = req.body.jsinci
-    const jsincii = req.body.jsincii
-    const jdmi = req.body.jdmi
-    const jdmii = req.body.jdmii
-    const jdmiii = req.body.jdmiii
-    const jdpi = req.body.jdpi
-    const jdpii = req.body.jdpii
-    const jdc = req.body.jdc
-    const jdinci = req.body.jdinci
-    const jdincii = req.body.jdincii
+    const c1a = req.body.c1a
+    const c1b = req.body.c1b
+    const c1c = req.body.c1c
+    const c1d = req.body.c1d
+    const c1e = req.body.c1e
+    const c1f = req.body.c1f
+    const c1g = req.body.c1g
+    const c1h = req.body.c1h
+    const c2a = req.body.c2a
+    const c2b = req.body.c2b
+    const c2c = req.body.c2c
+    const c2d = req.body.c2d
+    const c2e = req.body.c2e
+    const c2f = req.body.c2f
+    const c2g = req.body.c2g
+    const c2h = req.body.c2h
+    const c3a = req.body.c3a
+    const c3b = req.body.c3b
+    const c3c = req.body.c3c
+    const c3d = req.body.c3d
+    const c3e = req.body.c3e
+    const c3f = req.body.c3f
+    const c3g = req.body.c3g
+    const c3h = req.body.c3h
+    const c4a = req.body.c4a
+    const c4b = req.body.c4b
+    const c4c = req.body.c4c
+    const c4d = req.body.c4d
+    const c4e = req.body.c4e
+    const c4f = req.body.c4f
+    const c4g = req.body.c4g
+    const c4h = req.body.c4h
 
 
     try {
@@ -134,38 +134,38 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             lastname: lastname,
             phoneno: phoneno,
             importantdetails: importantdetails,
-            sdmi: sdmi,
-            sdmii: sdmii,
-            sdmiii: sdmiii,
-            sdpi: sdpi,
-            sdpii: sdpii,
-            sdc: sdc,
-            sdinci: sdinci,
-            sdincii: sdincii,
-            ssmi: ssmi,
-            ssmii: ssmii,
-            ssmiii: ssmiii,
-            sspi: sspi,
-            sspii: sspii,
-            ssc: ssc,
-            ssinci: ssinci,
-            ssincii: ssincii,
-            jsmi: jsmi,
-            jsmii: jsmii,
-            jsmiii: jsmiii,
-            jspi: jspi,
-            jspii: jspii,
-            jsc: jsc,
-            jsinci: jsinci,
-            jsincii: jsincii,
-            jdmi: jdmi,
-            jdmii: jdmii,
-            jdmiii: jdmiii,
-            jdpi: jdpi,
-            jdpii: jdpii,
-            jdc: jdc,
-            jdinci: jdinci,
-            jdincii: jdincii,
+            c1a: c1a,
+            c1b: c1b,
+            c1c: c1c,
+            c1d: c1d,
+            c1e: c1e,
+            c1f: c1f,
+            c1g: c1g,
+            c1h: c1h,
+            c2a: c2a,
+            c2b: c2b,
+            c2c: c2c,
+            c2d: c2d,
+            c2e: c2e,
+            c2f: c2f,
+            c2g: c2g,
+            c2h: c2h,
+            c3a: c3a,
+            c3b: c3b,
+            c3c: c3c,
+            c3d: c3d,
+            c3e: c3e,
+            c3f: c3f,
+            c3g: c3g,
+            c3h: c3h,
+            c4a: c4a,
+            c4b: c4b,
+            c4c: c4c,
+            c4d: c4d,
+            c4e: c4e,
+            c4f: c4f,
+            c4g: c4g,
+            c4h: c4h,
         })
         res.status(201).json(newNote);
     } catch (error) {
@@ -183,38 +183,38 @@ interface updateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
-    sdmi?: string,
-    sdmii?: string,
-    sdmiii?: string,
-    sdpi?: string,
-    sdpii?: string,
-    sdc?: string,
-    sdinci?: string,
-    sdincii?: string,
-    ssmi?: string,
-    ssmii?: string,
-    ssmiii?: string,
-    sspi?: string,
-    sspii?: string,
-    ssc?: string,
-    ssinci?: string,
-    ssincii?: string,
-    jdmi?: string,
-    jdmii?: string,
-    jdmiii?: string,
-    jdpi?: string,
-    jdpii?: string,
-    jdc?: string,
-    jdinci?: string,
-    jdincii?: string,
-    jsmi?: string,
-    jsmii?: string,
-    jsmiii?: string,
-    jspi?: string,
-    jspii?: string,
-    jsc?: string,
-    jsinci?: string,
-    jsincii?: string,
+    c1a?: string,
+    c1b?: string,
+    c1c?: string,
+    c1d?: string,
+    c1e?: string,
+    c1f?: string,
+    c1g?: string,
+    c1h?: string,
+    c2a?: string,
+    c2b?: string,
+    c2c?: string,
+    c2d?: string,
+    c2e?: string,
+    c2f?: string,
+    c2g?: string,
+    c2h?: string,
+    c3a?: string,
+    c3b?: string,
+    c3c?: string,
+    c3d?: string,
+    c3e?: string,
+    c3f?: string,
+    c3g?: string,
+    c3h?: string,
+    c4a?: string,
+    c4b?: string,
+    c4c?: string,
+    c4d?: string,
+    c4e?: string,
+    c4f?: string,
+    c4g?: string,
+    c4h?: string,
 }
 
 export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBody, unknown> = async (req, res, next) => {
@@ -225,38 +225,38 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newLastname = req.body.lastname
     const newPhoneno = req.body.phoneno
     const newImportantdetails = req.body.importantdetails
-    const newSdmi = req.body.sdmi
-    const newSdmii = req.body.sdmii
-    const newSdmiii = req.body.sdmiii
-    const newSdpi = req.body.sdpi
-    const newSdpii = req.body.sdpii
-    const newSdc = req.body.sdc
-    const newSdinci = req.body.sdinci
-    const newSdincii = req.body.sdincii
-    const newSsmi = req.body.ssmi
-    const newSsmii = req.body.ssmii
-    const newSsmiii = req.body.ssmiii
-    const newSspi = req.body.sspi
-    const newSspii = req.body.sspii
-    const newSsc = req.body.ssc
-    const newSsinci = req.body.ssinci
-    const newSsincii = req.body.ssincii
-    const newJsmi = req.body.jsmi
-    const newJsmii = req.body.jsmii
-    const newJsmiii = req.body.jsmiii
-    const newJspi = req.body.jspi
-    const newJspii = req.body.jspii
-    const newJsc = req.body.jsc
-    const newJsinci = req.body.jsinci
-    const newJsincii = req.body.jsincii
-    const newJdmi = req.body.jdmi
-    const newJdmii = req.body.jdmii
-    const newJdmiii = req.body.jdmiii
-    const newJdpi = req.body.jdpi
-    const newJdpii = req.body.jdpii
-    const newJdc = req.body.jdc
-    const newJdinci = req.body.jdinci
-    const newJdincii = req.body.jdincii
+    const newC1a = req.body.c1a
+    const newC1b = req.body.c1b
+    const newC1c = req.body.c1c
+    const newC1d = req.body.c1d
+    const newC1e = req.body.c1e
+    const newC1f = req.body.c1f
+    const newC1g = req.body.c1g
+    const newC1h = req.body.c1h
+    const newC2a = req.body.c2a
+    const newC2b = req.body.c2b
+    const newC2c = req.body.c2c
+    const newC2d = req.body.c2d
+    const newC2e = req.body.c2e
+    const newC2f = req.body.c2f
+    const newC2g = req.body.c2g
+    const newC2h = req.body.c2h
+    const newC3a = req.body.c3a
+    const newC3b = req.body.c3b
+    const newC3c = req.body.c3c
+    const newC3d = req.body.c3d
+    const newC3e = req.body.c3e
+    const newC3f = req.body.c3f
+    const newC3g = req.body.c3g
+    const newC3h = req.body.c3h
+    const newC4a = req.body.c4a
+    const newC4b = req.body.c4b
+    const newC4c = req.body.c4c
+    const newC4d = req.body.c4d
+    const newC4e = req.body.c4e
+    const newC4f = req.body.c4f
+    const newC4g = req.body.c4g
+    const newC4h = req.body.c4h
     try {
         assertIsDefined(authenticatedUserId);
 
@@ -273,38 +273,38 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.lastname = newLastname;
         note.phoneno = newPhoneno;
         note.importantdetails = newImportantdetails;
-        note.sdmi = newSdmi;
-        note.sdmii = newSdmii;
-        note.sdmiii = newSdmiii;
-        note.sdpi = newSdpi;
-        note.sdpii = newSdpii;
-        note.sdc = newSdc;
-        note.sdinci = newSdinci;
-        note.sdincii = newSdincii;
-        note.ssmi = newSsmi;
-        note.ssmii = newSsmii;
-        note.ssmiii = newSsmiii;
-        note.sspi = newSspi;
-        note.sspii = newSspii;
-        note.ssc = newSsc;
-        note.ssinci = newSsinci;
-        note.ssincii = newSsincii;
-        note.jsmi = newJsmi;
-        note.jsmii = newJsmii;
-        note.jsmiii = newJsmiii
-        note.jspi = newJspi;
-        note.jspii = newJspii;
-        note.jsc = newJsc;
-        note.jsinci = newJsinci;
-        note.jsincii = newJsincii;
-        note.jdmi = newJdmi;
-        note.jdmii = newJdmii;
-        note.jdmiii = newJdmiii;
-        note.jdpi = newJdpi;
-        note.jdpii = newJdpii;
-        note.jdc = newJdc;
-        note.jdinci = newJdinci;
-        note.jdincii = newJdincii;
+        note.c1a = newC1a;
+        note.c1b = newC1b;
+        note.c1c = newC1c;
+        note.c1d = newC1d;
+        note.c1e = newC1e;
+        note.c1f = newC1f;
+        note.c1g = newC1g;
+        note.c1h = newC1h;
+        note.c2a = newC2a;
+        note.c2b = newC2b;
+        note.c2c = newC2c;
+        note.c2d = newC2d;
+        note.c2e = newC2e;
+        note.c2f = newC2f;
+        note.c2g = newC2g;
+        note.c2h = newC2h;
+        note.c3a = newC3a;
+        note.c3b = newC3b;
+        note.c3c = newC3c
+        note.c3d = newC3d;
+        note.c3e = newC3e;
+        note.c3f = newC3f;
+        note.c3g = newC3g;
+        note.c3h = newC3h;
+        note.c4a = newC4a;
+        note.c4b = newC4b;
+        note.c4c = newC4c;
+        note.c4d = newC4d;
+        note.c4e = newC4e;
+        note.c4f = newC4f;
+        note.c4g = newC4g;
+        note.c4h = newC4h;
 
         const updatedNote = await note.save();
 
