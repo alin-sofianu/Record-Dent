@@ -154,7 +154,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-4 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c1a?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -168,12 +168,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar I"
+                                                    label="Incisiv I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar I"
+                                                        placeholder="Incisiv I"
                                                         {...register("c1a")}
                                                     />
                                                 </FloatingLabel>
@@ -184,7 +184,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c1b?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -198,12 +198,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar II"
+                                                    label="Incisiv II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar II"
+                                                        placeholder="Incisiv II"
                                                         {...register("c1b")}
                                                     />
                                                 </FloatingLabel>
@@ -214,7 +214,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
+                                                    <img src={canine} alt="canine" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c1c?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -228,12 +228,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar III"
+                                                    label="Canin"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar III"
+                                                        placeholder="Canin"
                                                         {...register("c1c")}
                                                     />
                                                 </FloatingLabel>
@@ -306,105 +306,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1f?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Canin"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Canin"
-                                                        {...register("c1f")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1g?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv I"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv I"
-                                                        {...register("c1g")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1h?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv II"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv II"
-                                                        {...register("c1h")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <h5 className="fw-bold mt-3">Cadran II</h5>
-                        <ListGroup>
-                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
-                                <Row>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
-                                                <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -423,7 +326,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("c2a")}
+                                                        {...register("c1f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -431,10 +334,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -453,7 +356,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("c2b")}
+                                                        {...register("c1g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -461,10 +364,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c1h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -483,6 +386,103 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
+                                                        {...register("c1h")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
+                        <h5 className="fw-bold mt-3">Cadran II</h5>
+                        <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Row>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-4 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c2a?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv I"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv I"
+                                                        {...register("c2a")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c2b?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv II"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv II"
+                                                        {...register("c2b")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c2c?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Canin"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Canin"
                                                         {...register("c2c")}
                                                     />
                                                 </FloatingLabel>
@@ -555,105 +555,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2f?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Canin"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Canine"
-                                                        {...register("c2f")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2g?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv I"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv I"
-                                                        {...register("c2g")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2h?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv II"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv II"
-                                                        {...register("c2h")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <h5 className="fw-bold mt-3">Cadran IV</h5>
-                        <ListGroup>
-                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
-                                <Row>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
-                                                <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -672,7 +575,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("c3a")}
+                                                        {...register("c2f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -680,10 +583,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -702,7 +605,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("c3b")}
+                                                        {...register("c2g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -710,10 +613,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c2h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -732,6 +635,103 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
+                                                        {...register("c2h")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
+                        <h5 className="fw-bold mt-3">Cadran IV</h5>
+                        <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Row>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-4 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c3a?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv I"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv I"
+                                                        {...register("c3a")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c3b?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv II"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv II"
+                                                        {...register("c3b")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c3c?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Canin"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Canin"
                                                         {...register("c3c")}
                                                     />
                                                 </FloatingLabel>
@@ -804,105 +804,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3f?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Canin"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Canin"
-                                                        {...register("c3f")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3g?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv I"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv I"
-                                                        {...register("c3g")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-0">
-                                                <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3h?.length! > 0)
-                                                        ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
-                                                        :
-                                                        <></>
-                                                    }
-                                                </InputGroup.Text>
-                                                <FloatingLabel
-                                                    controlId="floatingInput"
-                                                    label="Incisiv II"
-                                                >
-                                                    <Form.Control
-                                                        as='textarea'
-                                                        rows={1}
-                                                        placeholder="Incisiv II"
-                                                        {...register("c3h")}
-                                                    />
-                                                </FloatingLabel>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <h5 className="fw-bold mt-3">Cadran III</h5>
-                        <ListGroup>
-                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
-                                <Row>
-                                    <Col>
-                                        <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
-                                                <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3f?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -921,7 +824,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar I"
-                                                        {...register("c4a")}
+                                                        {...register("c3f")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -929,10 +832,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3g?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -951,7 +854,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar II"
-                                                        {...register("c4b")}
+                                                        {...register("c3g")}
                                                     />
                                                 </FloatingLabel>
                                             </InputGroup>
@@ -959,10 +862,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                     </Col>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-3 mt-2">
+                                            <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
                                                     <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit.c3h?.length! > 0)
                                                         ?
                                                         <MdAddTask
                                                             className="ms-auto"
@@ -981,6 +884,103 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         as='textarea'
                                                         rows={1}
                                                         placeholder="Molar III"
+                                                        {...register("c3h")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
+                        <h5 className="fw-bold mt-3">Cadran III</h5>
+                        <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Row>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-4 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c4a?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv I"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv I"
+                                                        {...register("c4a")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c4b?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Incisiv II"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Incisiv II"
+                                                        {...register("c4b")}
+                                                    />
+                                                </FloatingLabel>
+                                            </InputGroup>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group>
+                                            <InputGroup className="mb-3 mt-2">
+                                                <InputGroup.Text id="basic-addon1">
+                                                    <img src={canine} alt="canine" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit.c4c?.length! > 0)
+                                                        ?
+                                                        <MdAddTask
+                                                            className="ms-auto"
+                                                            color="green"
+                                                            style={{ width: '1.8em', height: '1.8em' }}
+                                                        />
+                                                        :
+                                                        <></>
+                                                    }
+                                                </InputGroup.Text>
+                                                <FloatingLabel
+                                                    controlId="floatingInput"
+                                                    label="Canin"
+                                                >
+                                                    <Form.Control
+                                                        as='textarea'
+                                                        rows={1}
+                                                        placeholder="Canin"
                                                         {...register("c4c")}
                                                     />
                                                 </FloatingLabel>
@@ -1053,7 +1053,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
+                                                    <img src={molar} alt="molar" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c4f?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -1067,12 +1067,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Canin"
+                                                    label="Molar I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Canin"
+                                                        placeholder="Molar I"
                                                         {...register("c4f")}
                                                     />
                                                 </FloatingLabel>
@@ -1083,7 +1083,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    <img src={molar} alt="molar" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c4g?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -1097,12 +1097,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv I"
+                                                    label="Molar II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv I"
+                                                        placeholder="Molar II"
                                                         {...register("c4g")}
                                                     />
                                                 </FloatingLabel>
@@ -1113,7 +1113,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    <img src={molar} alt="molar" width={26} height={26} />
                                                     {(noteToEdit && noteToEdit.c4h?.length! > 0)
                                                         ?
                                                         <MdAddTask
@@ -1127,12 +1127,12 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv II"
+                                                    label="Molar III"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv II"
+                                                        placeholder="Molar III"
                                                         {...register("c4h")}
                                                     />
                                                 </FloatingLabel>
