@@ -82,6 +82,38 @@ interface CreateNoteBody {
     c4f?: string,
     c4g?: string,
     c4h?: string,
+    c1aProgress?: string,
+    c1bProgress?: string,
+    c1cProgress?: string,
+    c1dProgress?: string,
+    c1eProgress?: string,
+    c1fProgress?: string,
+    c1gProgress?: string,
+    c1hProgress?: string,
+    c2aProgress?: string,
+    c2bProgress?: string,
+    c2cProgress?: string,
+    c2dProgress?: string,
+    c2eProgress?: string,
+    c2fProgress?: string,
+    c2gProgress?: string,
+    c2hProgress?: string,
+    c3aProgress?: string,
+    c3bProgress?: string,
+    c3cProgress?: string,
+    c3dProgress?: string,
+    c3eProgress?: string,
+    c3fProgress?: string,
+    c3gProgress?: string,
+    c3hProgress?: string,
+    c4aProgress?: string,
+    c4bProgress?: string,
+    c4cProgress?: string,
+    c4dProgress?: string,
+    c4eProgress?: string,
+    c4fProgress?: string,
+    c4gProgress?: string,
+    c4hProgress?: string,
 }
 
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
@@ -126,6 +158,38 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const c4f = req.body.c4f
     const c4g = req.body.c4g
     const c4h = req.body.c4h
+    const c1aProgress = req.body.c1aProgress
+    const c1bProgress = req.body.c1bProgress
+    const c1cProgress = req.body.c1cProgress
+    const c1dProgress = req.body.c1dProgress
+    const c1eProgress = req.body.c1eProgress
+    const c1fProgress = req.body.c1fProgress
+    const c1gProgress = req.body.c1gProgress
+    const c1hProgress = req.body.c1hProgress
+    const c2aProgress = req.body.c2aProgress
+    const c2bProgress = req.body.c2bProgress
+    const c2cProgress = req.body.c2cProgress
+    const c2dProgress = req.body.c2dProgress
+    const c2eProgress = req.body.c2eProgress
+    const c2fProgress = req.body.c2fProgress
+    const c2gProgress = req.body.c2gProgress
+    const c2hProgress = req.body.c2hProgress
+    const c3aProgress = req.body.c3aProgress
+    const c3bProgress = req.body.c3bProgress
+    const c3cProgress = req.body.c3cProgress
+    const c3dProgress = req.body.c3dProgress
+    const c3eProgress = req.body.c3eProgress
+    const c3fProgress = req.body.c3fProgress
+    const c3gProgress = req.body.c3gProgress
+    const c3hProgress = req.body.c3hProgress
+    const c4aProgress = req.body.c4aProgress
+    const c4bProgress = req.body.c4bProgress
+    const c4cProgress = req.body.c4cProgress
+    const c4dProgress = req.body.c4dProgress
+    const c4eProgress = req.body.c4eProgress
+    const c4fProgress = req.body.c4fProgress
+    const c4gProgress = req.body.c4gProgress
+    const c4hProgress = req.body.c4hProgress
 
 
     try {
@@ -175,6 +239,38 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             c4f: c4f,
             c4g: c4g,
             c4h: c4h,
+            c1aProgress: c1aProgress,
+            c1bProgress: c1bProgress,
+            c1cProgress: c1cProgress,
+            c1dProgress: c1dProgress,
+            c1eProgress: c1eProgress,
+            c1fProgress: c1fProgress,
+            c1gProgress: c1gProgress,
+            c1hProgress: c1hProgress,
+            c2aProgress: c2aProgress,
+            c2bProgress: c2bProgress,
+            c2cProgress: c2cProgress,
+            c2dProgress: c2dProgress,
+            c2eProgress: c2eProgress,
+            c2fProgress: c2fProgress,
+            c2gProgress: c2gProgress,
+            c2hProgress: c2hProgress,
+            c3aProgress: c3aProgress,
+            c3bProgress: c3bProgress,
+            c3cProgress: c3cProgress,
+            c3dProgress: c3dProgress,
+            c3eProgress: c3eProgress,
+            c3fProgress: c3fProgress,
+            c3gProgress: c3gProgress,
+            c3hProgress: c3hProgress,
+            c4aProgress: c4aProgress,
+            c4bProgress: c4bProgress,
+            c4cProgress: c4cProgress,
+            c4dProgress: c4dProgress,
+            c4eProgress: c4eProgress,
+            c4fProgress: c4fProgress,
+            c4gProgress: c4gProgress,
+            c4hProgress: c4hProgress,
         })
         res.status(201).json(newNote);
     } catch (error) {
@@ -227,6 +323,38 @@ interface updateNoteBody {
     c4f?: string,
     c4g?: string,
     c4h?: string,
+    c1aProgress?: string,
+    c1bProgress?: string,
+    c1cProgress?: string,
+    c1dProgress?: string,
+    c1eProgress?: string,
+    c1fProgress?: string,
+    c1gProgress?: string,
+    c1hProgress?: string,
+    c2aProgress?: string,
+    c2bProgress?: string,
+    c2cProgress?: string,
+    c2dProgress?: string,
+    c2eProgress?: string,
+    c2fProgress?: string,
+    c2gProgress?: string,
+    c2hProgress?: string,
+    c3aProgress?: string,
+    c3bProgress?: string,
+    c3cProgress?: string,
+    c3dProgress?: string,
+    c3eProgress?: string,
+    c3fProgress?: string,
+    c3gProgress?: string,
+    c3hProgress?: string,
+    c4aProgress?: string,
+    c4bProgress?: string,
+    c4cProgress?: string,
+    c4dProgress?: string,
+    c4eProgress?: string,
+    c4fProgress?: string,
+    c4gProgress?: string,
+    c4hProgress?: string,
 }
 
 export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBody, unknown> = async (req, res, next) => {
@@ -240,6 +368,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newDatefirstvisit = req.body.datefirstvisit
     const newCnp = req.body.cnp
     const newReason = req.body.reason
+
     const newC1a = req.body.c1a
     const newC1b = req.body.c1b
     const newC1c = req.body.c1c
@@ -272,6 +401,39 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newC4f = req.body.c4f
     const newC4g = req.body.c4g
     const newC4h = req.body.c4h
+
+    const newC1aProgress = req.body.c1aProgress
+    const newC1bProgress = req.body.c1bProgress
+    const newC1cProgress = req.body.c1cProgress
+    const newC1dProgress = req.body.c1dProgress
+    const newC1eProgress = req.body.c1eProgress
+    const newC1fProgress = req.body.c1fProgress
+    const newC1gProgress = req.body.c1gProgress
+    const newC1hProgress = req.body.c1hProgress
+    const newC2aProgress = req.body.c2aProgress
+    const newC2bProgress = req.body.c2bProgress
+    const newC2cProgress = req.body.c2cProgress
+    const newC2dProgress = req.body.c2dProgress
+    const newC2eProgress = req.body.c2eProgress
+    const newC2fProgress = req.body.c2fProgress
+    const newC2gProgress = req.body.c2gProgress
+    const newC2hProgress = req.body.c2hProgress
+    const newC3aProgress = req.body.c3aProgress
+    const newC3bProgress = req.body.c3bProgress
+    const newC3cProgress = req.body.c3cProgress
+    const newC3dProgress = req.body.c3dProgress
+    const newC3eProgress = req.body.c3eProgress
+    const newC3fProgress = req.body.c3fProgress
+    const newC3gProgress = req.body.c3gProgress
+    const newC3hProgress = req.body.c3hProgress
+    const newC4aProgress = req.body.c4aProgress
+    const newC4bProgress = req.body.c4bProgress
+    const newC4cProgress = req.body.c4cProgress
+    const newC4dProgress = req.body.c4dProgress
+    const newC4eProgress = req.body.c4eProgress
+    const newC4fProgress = req.body.c4fProgress
+    const newC4gProgress = req.body.c4gProgress
+    const newC4hProgress = req.body.c4hProgress
     try {
         assertIsDefined(authenticatedUserId);
 
@@ -309,7 +471,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.c2h = newC2h;
         note.c3a = newC3a;
         note.c3b = newC3b;
-        note.c3c = newC3c
+        note.c3c = newC3c;
         note.c3d = newC3d;
         note.c3e = newC3e;
         note.c3f = newC3f;
@@ -323,6 +485,38 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.c4f = newC4f;
         note.c4g = newC4g;
         note.c4h = newC4h;
+        note.c1aProgress = newC1aProgress;
+        note.c1bProgress = newC1bProgress;
+        note.c1cProgress = newC1cProgress;
+        note.c1dProgress = newC1dProgress;
+        note.c1eProgress = newC1eProgress;
+        note.c1fProgress = newC1fProgress;
+        note.c1gProgress = newC1gProgress;
+        note.c1hProgress = newC1hProgress;
+        note.c2aProgress = newC2aProgress;
+        note.c2bProgress = newC2bProgress;
+        note.c2cProgress = newC2cProgress;
+        note.c2dProgress = newC2dProgress;
+        note.c2eProgress = newC2eProgress;
+        note.c2fProgress = newC2fProgress;
+        note.c2gProgress = newC2gProgress;
+        note.c2hProgress = newC2hProgress;
+        note.c3aProgress = newC3aProgress;
+        note.c3bProgress = newC3bProgress;
+        note.c3cProgress = newC3cProgress;
+        note.c3dProgress = newC3dProgress;
+        note.c3eProgress = newC3eProgress;
+        note.c3fProgress = newC3fProgress;
+        note.c3gProgress = newC3gProgress;
+        note.c3hProgress = newC3hProgress;
+        note.c4aProgress = newC4aProgress;
+        note.c4bProgress = newC4bProgress;
+        note.c4cProgress = newC4cProgress;
+        note.c4dProgress = newC4dProgress;
+        note.c4eProgress = newC4eProgress;
+        note.c4fProgress = newC4fProgress;
+        note.c4gProgress = newC4gProgress;
+        note.c4hProgress = newC4hProgress;
 
         const updatedNote = await note.save();
 

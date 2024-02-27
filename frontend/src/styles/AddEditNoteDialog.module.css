@@ -1,0 +1,7 @@
+.progress {
+    border: 1px solid red;
+}
+
+.done {
+    border: 1px solid green;
+}

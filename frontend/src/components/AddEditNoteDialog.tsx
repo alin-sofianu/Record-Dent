@@ -10,7 +10,7 @@ import molar from "../images/molar.png"
 import premolar from "../images/premolar.png"
 import incisor from "../images/incisor.png"
 import { MdAddTask } from "react-icons/md"
-// import GroupTeethInput from "./form/GroupTeethInput";
+import { VscWorkspaceTrusted, VscWorkspaceUntrusted } from "react-icons/vsc";
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
     onDismiss: () => void,
@@ -97,7 +97,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             centered
         >
             <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: 'rgb(13, 110, 253)' }}>
-                <Modal.Title>{noteToEdit ? "Actualizează pacient" : "Adaugă pacient"}</Modal.Title>
+                <Modal.Title>{noteToEdit ? "Actualizeaza pacient" : "Adauga pacient"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form id="addEditNoteForm" onSubmit={handleSubmit(onSubmit)}>
@@ -106,6 +106,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         <Row>
                             <Col>
                                 <Form.Control
+                                    className="border border-primary"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Nume"
@@ -115,6 +116,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
+                                    className="border border-primary"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Prenume"
@@ -124,6 +126,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
+                                    className="border border-primary"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Număr de telefon"
@@ -133,6 +136,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
+                                    className="border border-primary"
                                     as='textarea'
                                     rows={1}
                                     placeholder="CNP"
@@ -142,6 +146,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
+                                    className="border border-primary"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Dată prima vizită"
@@ -158,6 +163,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     <Form.Group className="mb-4">
                         <Form.Label><h6 className="fw-bold">Motivele prezentării:</h6></Form.Label>
                         <Form.Control
+                            className="border border-primary"
                             as='textarea'
                             rows={3}
                             placeholder="Adaugă motivele prezentării..."
@@ -168,8 +174,9 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     <Form.Group className="mb-4">
                         <Form.Label><h6 className="fw-bold">Detalii importante:</h6></Form.Label>
                         <Form.Control
+                            className="border border-primary"
                             as='textarea'
-                            rows={3}
+                            rows={6}
                             placeholder="Adaugă detalii importante pacient..."
                             {...register("importantdetails")}
                         />
@@ -177,7 +184,6 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
 
                     <Container fluid="md" style={{ padding: "0px", maxWidth: '100%' }}>
                         <h5 className="fw-bold mt-5">Cadran I</h5>
-
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
@@ -185,26 +191,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-4 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1a === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1a === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1a) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv I"
+                                                    label="Molar I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv I"
+                                                        placeholder="Molar I"
                                                         {...register("c1a")}
                                                     />
                                                 </FloatingLabel>
@@ -215,26 +253,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1b === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1b === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1b) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv II"
+                                                    label="Molar II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv II"
+                                                        placeholder="Molar II"
                                                         {...register("c1b")}
                                                     />
                                                 </FloatingLabel>
@@ -245,26 +315,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1c === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1c === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1c) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={molar} alt="molar" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Canin"
+                                                    label="Molar III"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Canin"
+                                                        placeholder="Molar III"
                                                         {...register("c1c")}
                                                     />
                                                 </FloatingLabel>
@@ -275,17 +377,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1d?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1d === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1d === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1d) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -307,17 +441,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1e?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1e === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1e === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1e) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -337,26 +503,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1f?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1f === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1f === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1f) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar I"
+                                                    label="Canin"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar I"
+                                                        placeholder="Canin"
                                                         {...register("c1f")}
                                                     />
                                                 </FloatingLabel>
@@ -367,26 +565,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1g?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1g === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1g === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1g) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar II"
+                                                    label="Incisiv I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar II"
+                                                        placeholder="Incisiv I"
                                                         {...register("c1g")}
                                                     />
                                                 </FloatingLabel>
@@ -397,26 +627,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c1h?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c1h === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c1h === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c1h) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar III"
+                                                    label="Incisiv II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar III"
+                                                        placeholder="Incisiv II"
                                                         {...register("c1h")}
                                                     />
                                                 </FloatingLabel>
@@ -432,28 +694,60 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 <Row>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-4 mt-2">
+                                            <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2a === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2a === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2a) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv I"
+                                                    label="Molar I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv I"
+                                                        placeholder="Molar I"
                                                         {...register("c2a")}
                                                     />
                                                 </FloatingLabel>
@@ -464,26 +758,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2b === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2b === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2b) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv II"
+                                                    label="Molar II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv II"
+                                                        placeholder="Molar II"
                                                         {...register("c2b")}
                                                     />
                                                 </FloatingLabel>
@@ -494,26 +820,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2c === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2c === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2c) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Canin"
+                                                    label="Molar III"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Canin"
+                                                        placeholder="Molar III"
                                                         {...register("c2c")}
                                                     />
                                                 </FloatingLabel>
@@ -524,17 +882,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2d?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2d === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2d === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2d) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -556,17 +946,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2e?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2e === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2e === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2e) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -586,26 +1008,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2f?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2f === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2f === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2f) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar I"
+                                                    label="Canin"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar I"
+                                                        placeholder="Canine"
                                                         {...register("c2f")}
                                                     />
                                                 </FloatingLabel>
@@ -616,26 +1070,59 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2g?.length! > 0)
+                                                    <img src={incisor} alt="incisor" width={26} height={26} />
+                                                    {(noteToEdit && noteToEdit?.c2g === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2g === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2g) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar II"
+                                                    label="Incisiv I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar II"
+                                                        placeholder="Incisiv I"
                                                         {...register("c2g")}
                                                     />
                                                 </FloatingLabel>
@@ -646,26 +1133,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c2h?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c2h === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c2h === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c2h) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar III"
+                                                    label="Incisiv II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar III"
+                                                        placeholder="Incisiv II"
                                                         {...register("c2h")}
                                                     />
                                                 </FloatingLabel>
@@ -681,28 +1200,60 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 <Row>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-4 mt-2">
+                                            <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3a === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3a === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3a) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv I"
+                                                    label="Molar I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv I"
+                                                        placeholder="Molar I"
                                                         {...register("c3a")}
                                                     />
                                                 </FloatingLabel>
@@ -713,26 +1264,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3b === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3b === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3b) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv II"
+                                                    label="Molar II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv II"
+                                                        placeholder="Molar II"
                                                         {...register("c3b")}
                                                     />
                                                 </FloatingLabel>
@@ -743,26 +1326,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3c === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3c === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3c) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Canin"
+                                                    label="Molar III"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Canin"
+                                                        placeholder="Molar III"
                                                         {...register("c3c")}
                                                     />
                                                 </FloatingLabel>
@@ -773,17 +1388,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3d?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3d === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3d === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3d) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -805,17 +1452,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3e?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3e === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3e === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3e) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -835,26 +1514,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3f?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3f === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3f === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3f) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar I"
+                                                    label="Canin"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar I"
+                                                        placeholder="Canin"
                                                         {...register("c3f")}
                                                     />
                                                 </FloatingLabel>
@@ -865,26 +1576,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3g?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3g === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3g === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3g) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar II"
+                                                    label="Incisiv I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar II"
+                                                        placeholder="Incisiv I"
                                                         {...register("c3g")}
                                                     />
                                                 </FloatingLabel>
@@ -895,26 +1638,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c3h?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c3h === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c3h === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c3h) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar III"
+                                                    label="Incisiv II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar III"
+                                                        placeholder="Incisiv II"
                                                         {...register("c3h")}
                                                     />
                                                 </FloatingLabel>
@@ -930,28 +1705,60 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                 <Row>
                                     <Col>
                                         <Form.Group>
-                                            <InputGroup className="mb-4 mt-2">
+                                            <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4a?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4a === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4a === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4a) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv I"
+                                                    label="Molar I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv I"
+                                                        placeholder="Molar I"
                                                         {...register("c4a")}
                                                     />
                                                 </FloatingLabel>
@@ -962,26 +1769,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={incisor} alt="incisor" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4b?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4b === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4b === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4b) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Incisiv II"
+                                                    label="Molar II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Incisiv II"
+                                                        placeholder="Molar II"
                                                         {...register("c4b")}
                                                     />
                                                 </FloatingLabel>
@@ -992,26 +1831,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={canine} alt="canine" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4c?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4c === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4c === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4c) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Canin"
+                                                    label="Molar III"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Canin"
+                                                        placeholder="Molar III"
                                                         {...register("c4c")}
                                                     />
                                                 </FloatingLabel>
@@ -1022,17 +1893,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-3 mt-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4d?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4d === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4d === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4d) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -1054,17 +1957,49 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-2">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={premolar} alt="premolar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4e?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4e === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4e === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4e) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
@@ -1084,26 +2019,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4f?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4f === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4f === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4f) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar I"
+                                                    label="Canin"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar I"
+                                                        placeholder="Canin"
                                                         {...register("c4f")}
                                                     />
                                                 </FloatingLabel>
@@ -1114,26 +2081,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4g?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4g === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4g === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4g) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar II"
+                                                    label="Incisiv I"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar II"
+                                                        placeholder="Incisiv I"
                                                         {...register("c4g")}
                                                     />
                                                 </FloatingLabel>
@@ -1144,26 +2143,58 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                         <Form.Group>
                                             <InputGroup className="mb-0">
                                                 <InputGroup.Text id="basic-addon1">
-                                                    <img src={molar} alt="molar" width={26} height={26} />
-                                                    {(noteToEdit && noteToEdit.c4h?.length! > 0)
+                                                    {(noteToEdit && noteToEdit?.c4h === '1')
                                                         ?
-                                                        <MdAddTask
-                                                            className="ms-auto"
-                                                            color="green"
-                                                            style={{ width: '1.8em', height: '1.8em' }}
-                                                        />
+                                                        <Button
+                                                            size='sm'
+                                                            variant="danger"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            În lucru.
+                                                        </Button>
                                                         :
                                                         <></>
                                                     }
+                                                    {noteToEdit?.c4h === "2" ?
+                                                        <Button
+                                                            size='sm'
+                                                            variant="success"
+                                                            onClick={(e) => e.preventDefault()}
+                                                            style={{ marginRight: '7px' }}
+                                                            className="active"
+                                                        >
+                                                            Terminat.
+                                                        </Button>
+                                                        :
+                                                        <></>
+                                                    }
+                                                    {(() => {
+                                                        switch (noteToEdit?.c4h) {
+                                                            case '1':
+                                                                return <VscWorkspaceUntrusted
+                                                                    className="ms-auto"
+                                                                    color="red"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            case '2':
+                                                                return <VscWorkspaceTrusted
+                                                                    className="ms-auto"
+                                                                    color="green"
+                                                                    style={{ width: '1.8em', height: '1.8em' }} />
+                                                            default:
+                                                                return <img src={incisor} alt="incisor" width={26} height={26} />
+                                                        }
+                                                    })()}
                                                 </InputGroup.Text>
                                                 <FloatingLabel
                                                     controlId="floatingInput"
-                                                    label="Molar III"
+                                                    label="Incisiv II"
                                                 >
                                                     <Form.Control
                                                         as='textarea'
                                                         rows={1}
-                                                        placeholder="Molar III"
+                                                        placeholder="Incisiv II"
                                                         {...register("c4h")}
                                                     />
                                                 </FloatingLabel>
@@ -1185,7 +2216,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     form="addEditNoteForm"
                     disabled={isSubmitting}
                 >
-                    {noteToEdit ? "Actualizează" : "Adaugă"}
+                    {noteToEdit ? "Actualizeaza" : "Adauga"}
                 </Button>
             </Modal.Footer>
         </Modal >);
