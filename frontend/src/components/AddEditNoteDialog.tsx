@@ -5,11 +5,11 @@ import { Note } from "../models/note";
 import { useForm } from "react-hook-form";
 import { NoteInput } from "../network/notes_api";
 import * as NotesApi from "../network/notes_api"
-import canine from "../images/canine.png"
+// import canine from "../images/canine.png"
 import molar from "../images/molar.png"
-import premolar from "../images/premolar.png"
+// import premolar from "../images/premolar.png"
 import incisor from "../images/incisor.png"
-import { MdAddTask } from "react-icons/md"
+// import { MdAddTask } from "react-icons/md"
 import { VscWorkspaceTrusted, VscWorkspaceUntrusted } from "react-icons/vsc";
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
@@ -65,6 +65,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             c4f: noteToEdit?.c4f || "",
             c4g: noteToEdit?.c4g || "",
             c4h: noteToEdit?.c4h || "",
+            currentColor: noteToEdit?.currentColor || ","
 
         }
     });

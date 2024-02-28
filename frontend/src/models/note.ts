@@ -71,6 +71,7 @@ export interface Note {
     c4fProgress?: string,
     c4gProgress?: string,
     c4hProgress?: string,
+    currentColor?: string,
     createdAt: string,
     updatedAt: string
 }

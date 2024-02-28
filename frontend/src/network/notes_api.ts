@@ -152,6 +152,7 @@ export interface NoteInput {
     c4fProgress?: string,
     c4gProgress?: string,
     c4hProgress?: string,
+    currentColor?: string,
 }
 
 export async function createNote(note: NoteInput): Promise<Note> {

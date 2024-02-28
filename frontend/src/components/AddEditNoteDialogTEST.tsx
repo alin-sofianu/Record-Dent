@@ -5,7 +5,7 @@ import { Note } from "../models/note";
 import { useForm } from "react-hook-form";
 import { NoteInput } from "../network/notes_api";
 import * as NotesApi from "../network/notes_api"
-import molar from "../images/molar.png"
+// import molar from "../images/molar.png"
 import incisor from "../images/incisor.png"
 import { VscWorkspaceTrusted, VscWorkspaceUntrusted } from "react-icons/vsc";
 import { useState } from 'react';
@@ -73,6 +73,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             c4f: noteToEdit?.c4f || "",
             c4g: noteToEdit?.c4g || "",
             c4h: noteToEdit?.c4h || "",
+            currentColor: noteToEdit?.currentColor || "",
 
         }
     });
@@ -174,12 +175,10 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
                                 <Row>
                                     <Col>
-
                                         <div style={{ backgroundColor: currentColor, padding: '20px', textAlign: 'center' }}>
-                                            <h1>Color Cycling Component</h1>
-                                            <button onClick={handleButtonClick}>Change Color</button>
+                                            <h1>{currentColor}</h1>
+                                            <button onClick={handleButtonClick} {...register("currentColor")}>Change Color</button>
                                         </div>
-
                                     </Col>
 
 

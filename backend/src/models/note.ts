@@ -73,6 +73,7 @@ const noteSchema = new Schema({
     c4fProgress: { type: String },
     c4gProgress: { type: String },
     c4hProgress: { type: String },
+    currentColor: { type: String },
 }, { timestamps: true })
 
 type Note = InferSchemaType<typeof noteSchema>

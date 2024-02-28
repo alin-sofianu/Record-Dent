@@ -114,6 +114,7 @@ interface CreateNoteBody {
     c4fProgress?: string,
     c4gProgress?: string,
     c4hProgress?: string,
+    currentColor?: string,
 }
 
 export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknown> = async (req, res, next) => {
@@ -190,6 +191,7 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const c4fProgress = req.body.c4fProgress
     const c4gProgress = req.body.c4gProgress
     const c4hProgress = req.body.c4hProgress
+    const currentColor = req.body.currentColor
 
 
     try {
@@ -271,6 +273,7 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             c4fProgress: c4fProgress,
             c4gProgress: c4gProgress,
             c4hProgress: c4hProgress,
+            currentColor: currentColor,
         })
         res.status(201).json(newNote);
     } catch (error) {
@@ -355,6 +358,7 @@ interface updateNoteBody {
     c4fProgress?: string,
     c4gProgress?: string,
     c4hProgress?: string,
+    currentColor?: string,
 }
 
 export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBody, unknown> = async (req, res, next) => {
@@ -434,6 +438,8 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newC4fProgress = req.body.c4fProgress
     const newC4gProgress = req.body.c4gProgress
     const newC4hProgress = req.body.c4hProgress
+
+    const newCurrentColor = req.body.currentColor
     try {
         assertIsDefined(authenticatedUserId);
 
@@ -517,6 +523,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.c4fProgress = newC4fProgress;
         note.c4gProgress = newC4gProgress;
         note.c4hProgress = newC4hProgress;
+        note.currentColor = newCurrentColor;
 
         const updatedNote = await note.save();
 
