@@ -244,7 +244,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         <Row>
                             <Col>
                                 <Form.Control
-                                    className="border border-dark bg-light"
+                                    className="border border-dark"
+                                    style={{ backgroundColor: '#eef9fd' }}
                                     as='textarea'
                                     rows={1}
                                     placeholder="Nume"
@@ -254,7 +255,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-dark bg-light"
+                                    className="border border-dark"
+                                    style={{ backgroundColor: '#eef9fd' }}
                                     as='textarea'
                                     rows={1}
                                     placeholder="Prenume"
@@ -264,7 +266,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-dark bg-light"
+                                    className="border border-dark"
+                                    style={{ backgroundColor: '#eef9fd' }}
                                     as='textarea'
                                     rows={1}
                                     placeholder="Număr de telefon"
@@ -274,17 +277,19 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-dark bg-light"
+                                    className="border border-dark"
+                                    style={{ backgroundColor: '#eef9fd' }}
                                     as='textarea'
                                     rows={1}
-                                    placeholder="Varstă"
+                                    placeholder="Vârstă"
                                     isInvalid={!!errors.firstname}
                                     {...register("age")}
                                 />
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-dark bg-light"
+                                    className="border border-dark"
+                                    style={{ backgroundColor: '#eef9fd' }}
                                     as='textarea'
                                     rows={1}
                                     placeholder="CNP"
@@ -301,7 +306,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     <Form.Group className="mb-4">
                         <Form.Label><h6 className="fw-bold">Detalii importante:</h6></Form.Label>
                         <Form.Control
-                            className="border border-dark bg-light"
+                            className="border border-dark"
+                            style={{ backgroundColor: '#eef9fd' }}
                             as='textarea'
                             rows={6}
                             placeholder="Adaugă detalii importante pacient..."
@@ -309,8 +315,9 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         />
                     </Form.Group>
 
-                    <div style={{ marginTop: '6em' }}>
-                        <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
+                    <div style={{ margin: '6em 0' }}>
+                        <Container
+                            style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
                             <ListGroup>
                                 <ListGroup.Item style={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
                                     <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>

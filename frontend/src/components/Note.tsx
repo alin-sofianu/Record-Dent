@@ -13,7 +13,7 @@ interface NoteProps {
 }
 
 const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps) => {
-    const { firstname, lastname, phoneno, importantdetails, createdAt, updatedAt } = note;
+    const { firstname, lastname, phoneno, cnp, age, createdAt, updatedAt } = note;
 
     let createdUpdatedText: string;
     if (updatedAt > createdAt) {
@@ -41,7 +41,8 @@ const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps
                     />
                 </Card.Title>
                 <Card.Text className={styles.cardText}>Telefon: {phoneno}</Card.Text>
-                <Card.Text className={styles.cardText}>{importantdetails}</Card.Text>
+                <Card.Text className={styles.cardText}>CNP: {cnp}</Card.Text>
+                <Card.Text className={styles.cardText}>Vârstă: {age}</Card.Text>
             </Card.Body>
             <Card.Footer>{createdUpdatedText}</Card.Footer>
         </Card>
