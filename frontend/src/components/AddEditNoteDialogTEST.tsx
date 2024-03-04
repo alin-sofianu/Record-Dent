@@ -5,10 +5,10 @@ import { Controller, useForm, useWatch } from "react-hook-form";
 import { NoteInput } from "../network/notes_api";
 import * as NotesApi from "../network/notes_api"
 // import molar from "../images/molar.png"
-import { useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
-
+import styles from "../styles/AddEditNoteDialog.module.css";
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
     onDismiss: () => void,
@@ -18,32 +18,18 @@ interface AddEditNoteDialogProps {
 }
 
 const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialogProps) => {
-    // const [currentColorIndex, setCurrentColorIndex] = useState('red');
+    const [selectedOption, setSelectedOption] = useState('');
 
-
-    // const handleButtonClick = (e: { preventDefault: () => void; }) => {
-    //     e.preventDefault()
-
-    //     // Define an array of colors to cycle through
-    //     // Find the index of the current background color
-    //     const currentIndex = colors.indexOf(currentColorIndex);
-
-    //     // Calculate the next index and update the background color
-    //     const nextIndex = (currentIndex + 1) % colors.length;
-    //     const nextColor = colors[nextIndex];
-
-    //     //setCurrentColorIndex(nextColor);
-    //     // register("a1")
-    //     // sregister("a1")
-    //     console.log(noteToEdit?.a1);
-    //     console.log(currentColorIndex);
-    //     setValue('currentColorIndex', nextColor);
+    // const handleSelectChange = (event: React.ChangeEvent<any>) => {
+    //     setSelectedOption(event.target.value);
+    //     console.log(selectedOption)
     // };
 
 
 
+
     // this construct is from react-hook-form library.
-    const { register, control, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>({
+    const { register, control, getValues, handleSubmit, formState: { errors, isSubmitting } } = useForm<NoteInput>({
         defaultValues: {
             // noteToEdit?.title returns the title, or undefined if noteToEdit is undefined; instead of error.
             // title: noteToEdit?.title || "",
@@ -114,6 +100,13 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
 
         }
     });
+
+    // Set initial value when the component mounts
+    useEffect(() => {
+        if (control) {
+            setSelectedOption(getValues("a1") || '');
+        }
+    }, [control, getValues]);
 
     async function onSubmit(input: NoteInput) {
         try {
@@ -208,16 +201,15 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         </Row>
                     </Form.Group>
 
-                    <Container fluid="md" style={{ padding: "0px", maxWidth: '100%' }}>
+                    <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%', gap: '24px' }}>
                         <ListGroup>
                             <ListGroup.Item variant="primary" className="mb-3 mt-2">
-
-
-                                <Stack direction="horizontal" gap={2}>
-                                    <section style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
+                                    <section className={styles.section1}>
                                         <Controller
                                             render={({ field }) => (
-                                                <select {...field}>
+                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOption(e.target.value); }}>
+
                                                     <option value={0} selected>Sanatos</option>
                                                     <option value={10}>In lucru</option>
                                                     <option value={20}>Terminat</option>
@@ -227,35 +219,35 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             name="a1"
                                             control={control}
                                         />
-
-                                        {(() => {
-
-                                            switch (noteToEdit?.a1) {
-                                                case '0':
-                                                    return <Badge pill bg="info">
-                                                        5.5
-                                                    </Badge>
-                                                case '10':
-                                                    return <Badge pill bg="danger">
-                                                        5.5
-                                                    </Badge>
-                                                case '20':
-                                                    return <Badge pill bg="success">
-                                                        5.5
-                                                    </Badge>
-                                                case '30':
-                                                    return <Badge pill bg="dark">
-                                                        5.5
-                                                    </Badge>
-                                                default:
-                                                    return <Badge pill bg="info">
-                                                        5.5
-                                                    </Badge>
-                                            }
-                                        })()}
+                                        <p>{noteToEdit?.a1}/{selectedOption}</p>
+                                        <h1>
+                                            {(() => {
+                                                switch (selectedOption) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
                                     </section>
-
-                                    <section style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                    <section className={styles.section1}>
                                         <Controller
                                             render={({ field }) => (
                                                 <select {...field}>
@@ -268,29 +260,34 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             name="a2"
                                             control={control}
                                         />
-                                        {(() => {
-                                            switch (noteToEdit?.a2) {
-                                                case '0':
-                                                    return <Badge pill bg="info">
-                                                        5.4
-                                                    </Badge>
-                                                case '10':
-                                                    return <Badge pill bg="danger">
-                                                        5.4
-                                                    </Badge>
-                                                case '20':
-                                                    return <Badge pill bg="success">
-                                                        5.4
-                                                    </Badge>
-                                                case '30':
-                                                    return <Badge pill bg="dark">
-                                                        5.4
-                                                    </Badge>
-                                            }
-                                        })()}
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a2) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
                                     </section>
-
-                                    <section style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                    <section className={styles.section1}>
                                         <Controller
                                             render={({ field }) => (
                                                 <select {...field}>
@@ -303,30 +300,34 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             name="a3"
                                             control={control}
                                         />
-                                        {(() => {
-                                            switch (noteToEdit?.a3) {
-                                                case '0':
-                                                    return <Badge pill bg="info">
-                                                        5.3
-                                                    </Badge>
-                                                case '10':
-                                                    return <Badge pill bg="danger">
-                                                        5.3
-                                                    </Badge>
-                                                case '20':
-                                                    return <Badge pill bg="success">
-                                                        5.3
-                                                    </Badge>
-                                                case '30':
-                                                    return <Badge pill bg="dark">
-                                                        5.3
-                                                    </Badge>
-                                            }
-                                        })()}
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a3) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
                                     </section>
-
-
-                                    <section style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                    <section className={styles.section1}>
                                         <Controller
                                             render={({ field }) => (
                                                 <select {...field}>
@@ -339,29 +340,34 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             name="a4"
                                             control={control}
                                         />
-                                        {(() => {
-                                            switch (noteToEdit && noteToEdit?.a4) {
-                                                case '0':
-                                                    return <Badge pill bg="info">
-                                                        5.2
-                                                    </Badge>
-                                                case '10':
-                                                    return <Badge pill bg="danger">
-                                                        5.2
-                                                    </Badge>
-                                                case '20':
-                                                    return <Badge pill bg="success">
-                                                        5.2
-                                                    </Badge>
-                                                case '30':
-                                                    return <Badge pill bg="dark">
-                                                        5.2
-                                                    </Badge>
-                                            }
-                                        })()}
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a4) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
                                     </section>
-
-                                    <section style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                    <section className={styles.section1}>
                                         <Controller
                                             render={({ field }) => (
                                                 <select {...field}>
@@ -374,7 +380,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                             name="a5"
                                             control={control}
                                         />
-                                        <h3>
+                                        <h1>
                                             {(() => {
                                                 switch (noteToEdit && noteToEdit?.a5) {
                                                     case '0':
@@ -393,14 +399,1940 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                         return <Badge pill bg="dark">
                                                             5.1
                                                         </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
                                                 }
                                             })()}
-                                        </h3>
+                                        </h1>
+                                    </section>
+                                </Stack>
+                                <Stack direction="horizontal" gap={2} >
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a6"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a6) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.8
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.8
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.8
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a7"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a7) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.7
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.7
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.7
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a8"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a8) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.6
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.6
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.6
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a9"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a9) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a10"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a10) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a11"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a11) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a12"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a12) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a13"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a13) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
                                     </section>
                                 </Stack>
                             </ListGroup.Item>
                         </ListGroup>
+                        {/* <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Stack direction="horizontal" gap={2}>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a1"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a1) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a2"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a2) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a3"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a3) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a4"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a4) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a5"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a5) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                                <Stack direction="horizontal" gap={2}>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a6"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a6) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.8
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.8
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.8
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a7"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a7) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.7
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.7
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.7
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a8"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a8) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.6
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.6
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.6
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a9"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a9) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a10"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a10) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a11"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a11) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a12"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a12) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a13"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a13) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                            </ListGroup.Item>
+                        </ListGroup> */}
                     </Container >
+                    {/* <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%', gap: '24px' }}>
+                        <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Stack direction="horizontal" gap={2}>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a6"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a6) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.8
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.8
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.8
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a7"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a7) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.7
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.7
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.7
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a8"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a8) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.6
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.6
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.6
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a9"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a9) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a10"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a10) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a11"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a11) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a12"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a12) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a13"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a13) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                                <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a1"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a1) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a2"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a2) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a3"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a3) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a4"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a4) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a5"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a5) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                            </ListGroup.Item>
+                        </ListGroup>
+                        <ListGroup>
+                            <ListGroup.Item variant="primary" className="mb-3 mt-2">
+                                <Stack direction="horizontal" gap={2}>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a6"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a6) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.8
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.8
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.8
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.8
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a7"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a7) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.7
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.7
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.7
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.7
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a8"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a8) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.6
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.6
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.6
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.6
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a9"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a9) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a10"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a10) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a11"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a11) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a12"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a12) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section1}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a13"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a13) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            1.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            1.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            1.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            1.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                                <Stack direction="horizontal" gap={2}>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a1"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+
+                                                switch (noteToEdit?.a1) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.5
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.5
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.5
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.5
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a2"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a2) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.4
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.4
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.4
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.4
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a3"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit?.a3) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.3
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.3
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.3
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.3
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a4"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a4) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.2
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.2
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.2
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.2
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                    <section className={styles.section2}>
+                                        <Controller
+                                            render={({ field }) => (
+                                                <select {...field}>
+                                                    <option value={0} selected>Sanatos</option>
+                                                    <option value={10}>In lucru</option>
+                                                    <option value={20}>Terminat</option>
+                                                    <option value={30}>Extras</option>
+                                                </select>
+                                            )}
+                                            name="a5"
+                                            control={control}
+                                        />
+                                        <h1>
+                                            {(() => {
+                                                switch (noteToEdit && noteToEdit?.a5) {
+                                                    case '0':
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                    case '10':
+                                                        return <Badge pill bg="danger">
+                                                            5.1
+                                                        </Badge>
+                                                    case '20':
+                                                        return <Badge pill bg="success">
+                                                            5.1
+                                                        </Badge>
+                                                    case '30':
+                                                        return <Badge pill bg="dark">
+                                                            5.1
+                                                        </Badge>
+                                                    default:
+                                                        return <Badge pill bg="info">
+                                                            5.1
+                                                        </Badge>
+                                                }
+                                            })()}
+                                        </h1>
+                                    </section>
+                                </Stack>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Container> */}
+
                 </Form >
             </Modal.Body >
             <Modal.Footer>
