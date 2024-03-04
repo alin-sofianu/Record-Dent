@@ -47,7 +47,7 @@ interface CreateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
-    datefirstvisit?: string,
+    age?: string,
     cnp?: string,
     reason?: string,
     a1?: string,
@@ -116,7 +116,7 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const lastname = req.body.lastname
     const phoneno = req.body.phoneno
     const importantdetails = req.body.importantdetails
-    const datefirstvisit = req.body.datefirstvisit
+    const age = req.body.age
     const cnp = req.body.cnp
     const reason = req.body.reason
     const a1 = req.body.a1
@@ -195,7 +195,7 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             lastname: lastname,
             phoneno: phoneno,
             importantdetails: importantdetails,
-            datefirstvisit: datefirstvisit,
+            age: age,
             cnp: cnp,
             reason: reason,
             a1: a1,
@@ -276,7 +276,7 @@ interface updateNoteBody {
     lastname?: string,
     phoneno?: string,
     importantdetails?: string,
-    datefirstvisit?: string,
+    age?: string,
     cnp?: string,
     reason?: string,
     a1?: string,
@@ -346,7 +346,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newLastname = req.body.lastname
     const newPhoneno = req.body.phoneno
     const newImportantdetails = req.body.importantdetails
-    const newDatefirstvisit = req.body.datefirstvisit
+    const newAge = req.body.age
     const newCnp = req.body.cnp
     const newReason = req.body.reason
 
@@ -428,7 +428,7 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.lastname = newLastname;
         note.phoneno = newPhoneno;
         note.importantdetails = newImportantdetails;
-        note.datefirstvisit = newDatefirstvisit;
+        note.age = newAge;
         note.cnp = newCnp;
         note.reason = newReason;
         note.a1 = newA1;

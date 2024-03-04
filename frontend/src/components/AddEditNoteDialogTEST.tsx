@@ -80,7 +80,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             lastname: noteToEdit?.lastname || "",
             phoneno: noteToEdit?.phoneno || "",
             importantdetails: noteToEdit?.importantdetails || "",
-            datefirstvisit: noteToEdit?.datefirstvisit || "",
+            age: noteToEdit?.age || "",
             cnp: noteToEdit?.cnp || "",
             reason: noteToEdit?.reason || "",
             a1: noteToEdit?.a1 || "",
@@ -234,17 +234,17 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             aria-labelledby="example-custom-modal-styling-title"
             centered
         >
-            <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: 'rgb(13, 110, 253)' }}>
-                <Modal.Title>{noteToEdit ? "Actualizeaza pacient" : "Adauga pacient"}</Modal.Title>
+            <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: 'rgb(13, 110, 253)', marginBottom: "2em" }}>
+                <Modal.Title>{noteToEdit ? "Actualizează pacient" : "Adaugă pacient"}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{ marginBottom: "2em" }}>
                 <Form id="addEditNoteForm" onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">
                         <Form.Label><h6 className="fw-bold">Date personale:</h6></Form.Label>
                         <Row>
                             <Col>
                                 <Form.Control
-                                    className="border border-primary"
+                                    className="border border-dark bg-light"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Nume"
@@ -254,7 +254,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-primary"
+                                    className="border border-dark bg-light"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Prenume"
@@ -264,7 +264,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-primary"
+                                    className="border border-dark bg-light"
                                     as='textarea'
                                     rows={1}
                                     placeholder="Număr de telefon"
@@ -274,22 +274,22 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                             </Col>
                             <Col>
                                 <Form.Control
-                                    className="border border-primary"
+                                    className="border border-dark bg-light"
+                                    as='textarea'
+                                    rows={1}
+                                    placeholder="Varstă"
+                                    isInvalid={!!errors.firstname}
+                                    {...register("age")}
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    className="border border-dark bg-light"
                                     as='textarea'
                                     rows={1}
                                     placeholder="CNP"
                                     isInvalid={!!errors.firstname}
                                     {...register("cnp")}
-                                />
-                            </Col>
-                            <Col>
-                                <Form.Control
-                                    className="border border-primary"
-                                    as='textarea'
-                                    rows={1}
-                                    placeholder="Dată prima vizită"
-                                    isInvalid={!!errors.firstname}
-                                    {...register("datefirstvisit")}
                                 />
                             </Col>
                             <Form.Control.Feedback type="invalid">
@@ -298,2132 +298,2146 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         </Row>
                     </Form.Group>
 
-                    <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
-                        <ListGroup>
-                            <ListGroup.Item style={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
-                                <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona1(e.target.value); }}>
+                    <Form.Group className="mb-4">
+                        <Form.Label><h6 className="fw-bold">Detalii importante:</h6></Form.Label>
+                        <Form.Control
+                            className="border border-dark bg-light"
+                            as='textarea'
+                            rows={6}
+                            placeholder="Adaugă detalii importante pacient..."
+                            {...register("importantdetails")}
+                        />
+                    </Form.Group>
 
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a1"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona1) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            5.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            5.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            5.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            5.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            5.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona2(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a2"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona2) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            5.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            5.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            5.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            5.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            5.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona3(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a3"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona3) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            5.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            5.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            5.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            5.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            5.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona4(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a4"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona4) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            5.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            5.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            5.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            5.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            5.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona5(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a5"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona5) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            5.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            5.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            5.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            5.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            5.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                                <Stack direction="horizontal" gap={2} >
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona6(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a6"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
+                    <div style={{ marginTop: '6em' }}>
+                        <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
+                            <ListGroup>
+                                <ListGroup.Item style={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
+                                    <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona1(e.target.value); }}>
 
-                                                switch (selectedOptiona6) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.8
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.8
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.8
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.8
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.8
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona7(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a7"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona7) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.7
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.7
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.7
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.7
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.7
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a1"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona1) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                5.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                5.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                5.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                5.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                5.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona2(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a2"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona2) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                5.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                5.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                5.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                5.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                5.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona3(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a3"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona3) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                5.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                5.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                5.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                5.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                5.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona4(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a4"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona4) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                5.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                5.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                5.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                5.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                5.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona5(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a5"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona5) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                5.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                5.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                5.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                5.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                5.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                    <Stack direction="horizontal" gap={2} >
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona6(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a6"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
 
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona8(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a8"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona8) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.6
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.6
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.6
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.6
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.6
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona9(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a9"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona9) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona10(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a10"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona10) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona11(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a11"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona11) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona12(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a12"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona12) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona13(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="a13"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiona13) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            1.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            1.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            1.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            1.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            1.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <ListGroup>
-                            <ListGroup.Item style={{ borderTop: 'none', borderLeft: '2px solid black', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
-                                <Stack direction="horizontal" gap={2}>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb1(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b1"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb1) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            6.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            6.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            6.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            6.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            6.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb2(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b2"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb2) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            6.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            6.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            6.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            6.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            6.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb3(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b3"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb3) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            6.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            6.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            6.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            6.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            6.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb4(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b4"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb4) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            6.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            6.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            6.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            6.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            6.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb5(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b5"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb5) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            6.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            6.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            6.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            6.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            6.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                                <Stack direction="horizontal" gap={2}>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb6(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b6"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
+                                                    switch (selectedOptiona6) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.8
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.8
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.8
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.8
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.8
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona7(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a7"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona7) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.7
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.7
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.7
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.7
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.7
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
 
-                                                switch (selectedOptionb6) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb7(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b7"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb7) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona8(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a8"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona8) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.6
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.6
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.6
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.6
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.6
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona9(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a9"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona9) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona10(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a10"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona10) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona11(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a11"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona11) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona12(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a12"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona12) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiona13(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="a13"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiona13) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                1.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                1.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                1.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                1.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                1.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                </ListGroup.Item>
+                            </ListGroup>
+                            <ListGroup>
+                                <ListGroup.Item style={{ borderTop: 'none', borderLeft: '2px solid rgb(33, 37, 41)', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
+                                    <Stack direction="horizontal" gap={2}>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb1(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b1"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb1) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                6.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                6.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                6.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                6.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                6.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb2(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b2"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb2) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                6.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                6.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                6.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                6.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                6.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb3(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b3"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb3) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                6.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                6.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                6.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                6.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                6.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb4(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b4"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb4) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                6.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                6.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                6.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                6.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                6.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb5(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b5"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb5) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                6.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                6.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                6.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                6.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                6.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                    <Stack direction="horizontal" gap={2}>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb6(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b6"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
 
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb8(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b8"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb8) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb9(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b9"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb9) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb10(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b10"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb10) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb11(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b11"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb11) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.6
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.6
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.6
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.6
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.6
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb12(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b12"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb12) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.7
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.7
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.7
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.7
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.7
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb13(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="b13"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionb13) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            2.8
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            2.8
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            2.8
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            2.8
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            2.8
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Container >
-                    <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
-                        <ListGroup>
-                            <ListGroup.Item style={{ borderTop: '2px solid black', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
-                                <Stack direction="horizontal" gap={2}>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc1(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c1"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc1) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.8
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.8
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.8
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.8
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.8
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc2(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c2"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc2) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.7
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.7
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.7
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.7
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.7
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc3(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c3"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc3) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.6
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.6
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.6
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.6
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.6
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc4(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c4"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc4) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc5(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c5"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc5) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc6(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c6"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc6) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc7(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c7"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc7) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc8(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c8"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc8) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            4.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            4.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            4.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            4.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            4.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                                <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc9(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c9"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
+                                                    switch (selectedOptionb6) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb7(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b7"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb7) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
 
-                                                switch (selectedOptionc9) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            8.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            8.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            8.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            8.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            8.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc10(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c10"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc10) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            8.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            8.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            8.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            8.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            8.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc11(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c11"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc11) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            8.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            8.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            8.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            8.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            8.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc12(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c12"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc12) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            8.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            8.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            8.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            8.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            8.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc13(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="c13"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptionc13) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            8.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            8.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            8.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            8.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            8.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <ListGroup>
-                            <ListGroup.Item
-                                style={{ borderTop: '2px solid black', borderLeft: '2px solid black', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
-                                <Stack direction="horizontal" gap={2}>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond1(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d1"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb8(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b8"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb8) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb9(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b9"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb9) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb10(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b10"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb10) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb11(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b11"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb11) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.6
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.6
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.6
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.6
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.6
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb12(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b12"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb12) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.7
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.7
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.7
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.7
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.7
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionb13(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="b13"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionb13) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                2.8
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                2.8
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                2.8
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                2.8
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                2.8
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Container >
+                        <Container style={{ display: 'flex', justifyContent: 'center', padding: "0px", maxWidth: '50%' }}>
+                            <ListGroup>
+                                <ListGroup.Item style={{ borderTop: '2px solid rgb(33, 37, 41)', borderLeft: 'none', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
+                                    <Stack direction="horizontal" gap={2}>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc1(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c1"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc1) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.8
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.8
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.8
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.8
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.8
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc2(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c2"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc2) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.7
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.7
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.7
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.7
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.7
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc3(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c3"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc3) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.6
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.6
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.6
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.6
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.6
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc4(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c4"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc4) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc5(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c5"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc5) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc6(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c6"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc6) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc7(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c7"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc7) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc8(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c8"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc8) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                4.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                4.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                4.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                4.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                4.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                    <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc9(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c9"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
 
-                                                switch (selectedOptiond1) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond2(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d2"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond2) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
+                                                    switch (selectedOptionc9) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                8.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                8.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                8.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                8.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                8.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc10(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c10"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc10) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                8.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                8.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                8.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                8.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                8.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc11(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c11"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc11) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                8.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                8.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                8.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                8.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                8.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc12(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c12"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc12) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                8.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                8.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                8.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                8.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                8.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptionc13(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="c13"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptionc13) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                8.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                8.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                8.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                8.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                8.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                </ListGroup.Item>
+                            </ListGroup>
+                            <ListGroup>
+                                <ListGroup.Item
+                                    style={{ borderTop: '2px solid rgb(33, 37, 41)', borderLeft: '2px solid rgb(33, 37, 41)', borderRight: 'none', borderBottom: 'none', borderRadius: '0px' }}>
+                                    <Stack direction="horizontal" gap={2}>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond1(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d1"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
 
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond3(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d3"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond3) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond4(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d4"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond4) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond5(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d5"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond5) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond6(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d6"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond6) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.6
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.6
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.6
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.6
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.6
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond7(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d7"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond7) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.7
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.7
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.7
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.7
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.7
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section1}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond8(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d8"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond8) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            3.8
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            3.8
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            3.8
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            3.8
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            3.8
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                                <Stack direction="horizontal" gap={2}>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond9(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d9"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
+                                                    switch (selectedOptiond1) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond2(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d2"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond2) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
 
-                                                switch (selectedOptiond9) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            7.1
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            7.1
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            7.1
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            7.1
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            7.1
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond10(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d10"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond10) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            7.2
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            7.2
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            7.2
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            7.2
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            7.2
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond11(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d11"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond11) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            7.3
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            7.3
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            7.3
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            7.3
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            7.3
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond12(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d12"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond12) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            7.4
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            7.4
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            7.4
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            7.4
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            7.4
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                    <section className={styles.section2}>
-                                        <Controller
-                                            render={({ field }) => (
-                                                <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond13(e.target.value); }}>
-                                                    <option value={0} selected>Sanatos</option>
-                                                    <option value={10}>In lucru</option>
-                                                    <option value={20}>Terminat</option>
-                                                    <option value={30}>Extras</option>
-                                                </select>
-                                            )}
-                                            name="d13"
-                                            control={control}
-                                        />
-                                        <h1>
-                                            {(() => {
-                                                switch (selectedOptiond13) {
-                                                    case '0':
-                                                        return <Badge pill bg="info">
-                                                            7.5
-                                                        </Badge>
-                                                    case '10':
-                                                        return <Badge pill bg="danger">
-                                                            7.5
-                                                        </Badge>
-                                                    case '20':
-                                                        return <Badge pill bg="success">
-                                                            7.5
-                                                        </Badge>
-                                                    case '30':
-                                                        return <Badge pill bg="dark">
-                                                            7.5
-                                                        </Badge>
-                                                    default:
-                                                        return <Badge pill bg="info">
-                                                            7.5
-                                                        </Badge>
-                                                }
-                                            })()}
-                                        </h1>
-                                    </section>
-                                </Stack>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Container>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond3(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d3"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond3) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond4(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d4"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond4) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond5(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d5"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond5) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond6(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d6"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond6) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.6
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.6
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.6
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.6
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.6
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond7(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d7"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond7) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.7
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.7
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.7
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.7
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.7
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section1}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond8(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d8"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond8) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                3.8
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                3.8
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                3.8
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                3.8
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                3.8
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                    <Stack direction="horizontal" gap={2}>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond9(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d9"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+
+                                                    switch (selectedOptiond9) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                7.1
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                7.1
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                7.1
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                7.1
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                7.1
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond10(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d10"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond10) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                7.2
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                7.2
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                7.2
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                7.2
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                7.2
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond11(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d11"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond11) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                7.3
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                7.3
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                7.3
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                7.3
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                7.3
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond12(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d12"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond12) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                7.4
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                7.4
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                7.4
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                7.4
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                7.4
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                        <section className={styles.section2}>
+                                            <Controller
+                                                render={({ field }) => (
+                                                    <select {...field} onChange={(e) => { field.onChange(e); setSelectedOptiond13(e.target.value); }}>
+                                                        <option value={0} selected>Sanatos</option>
+                                                        <option value={10}>In lucru</option>
+                                                        <option value={20}>Terminat</option>
+                                                        <option value={30}>Extras</option>
+                                                    </select>
+                                                )}
+                                                name="d13"
+                                                control={control}
+                                            />
+                                            <h1>
+                                                {(() => {
+                                                    switch (selectedOptiond13) {
+                                                        case '0':
+                                                            return <Badge pill bg="info">
+                                                                7.5
+                                                            </Badge>
+                                                        case '10':
+                                                            return <Badge pill bg="danger">
+                                                                7.5
+                                                            </Badge>
+                                                        case '20':
+                                                            return <Badge pill bg="success">
+                                                                7.5
+                                                            </Badge>
+                                                        case '30':
+                                                            return <Badge pill bg="dark">
+                                                                7.5
+                                                            </Badge>
+                                                        default:
+                                                            return <Badge pill bg="info">
+                                                                7.5
+                                                            </Badge>
+                                                    }
+                                                })()}
+                                            </h1>
+                                        </section>
+                                    </Stack>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Container>
+                    </div>
+
 
                 </Form >
             </Modal.Body >
@@ -2436,7 +2450,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                     form="addEditNoteForm"
                     disabled={isSubmitting}
                 >
-                    {noteToEdit ? "Actualizeaza" : "Adauga"}
+                    {noteToEdit ? "Actualizează" : "Adaugă"}
                 </Button>
             </Modal.Footer>
         </Modal >);

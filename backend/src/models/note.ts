@@ -6,7 +6,7 @@ const noteSchema = new Schema({
     lastname: { type: String },
     phoneno: { type: String },
     importantdetails: { type: String },
-    datefirstvisit: { type: String },
+    age: { type: String },
     cnp: { type: String },
     reason: { type: String },
     a1: { type: String },

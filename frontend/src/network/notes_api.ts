@@ -85,7 +85,7 @@ export interface NoteInput {
     lastname: string,
     phoneno: string,
     importantdetails?: string,
-    datefirstvisit?: string,
+    age?: string,
     cnp?: string,
     reason?: string,
     a1?: string,
