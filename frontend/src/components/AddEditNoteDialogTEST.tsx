@@ -9,6 +9,8 @@ import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
 import styles from "../styles/AddEditNoteDialog.module.css";
 import styleUtils from "../styles/utils.module.css";
+import PrintableTableDiagnostic from './PrintableTableDiagnostic';
+import PrintableTableTreatment from './PrintableTableTreatment';
 
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
@@ -2447,7 +2449,8 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         </Container>
                     </div>
 
-
+                    <PrintableTableDiagnostic />
+                    <PrintableTableTreatment />
                 </Form >
             </Modal.Body >
             <Modal.Footer>
