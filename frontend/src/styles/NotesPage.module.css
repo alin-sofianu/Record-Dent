@@ -18,3 +18,22 @@
 .note:hover {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+
+.input {
+    background-color: #0D6EFD;
+    color: white;
+    padding: 8px 16px;
+    margin: 8px 2em 8px 0px;
+    border: none;
+    border-radius: 6px;
+    cursor: text;
+    font-size: 20px;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.input:focus-visible {
+    border: none;
+}

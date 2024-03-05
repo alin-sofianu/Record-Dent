@@ -14,7 +14,7 @@ interface NavBarProps {
 
 const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccessful }: NavBarProps) => {
     return (
-        <Navbar bg="primary" variant="dark" expand="sm" sticky="top">
+        <Navbar bg="primary" variant="dark" expand="sm" sticky="top" className="mb-5">
             <Container>
                 <Navbar.Brand as={Link} to="/" style={{ display: 'flex' }}>
                     <img src={logo} alt="logo" width={35} height={35} />

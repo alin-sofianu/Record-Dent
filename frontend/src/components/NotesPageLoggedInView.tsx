@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Button, Col, Row, Spinner } from "react-bootstrap";
+import { SetStateAction, useEffect, useState } from 'react';
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
+import { MdSearch } from "react-icons/md";
 import { Note as NoteModel } from '../models/note';
 import * as NotesApi from "../network/notes_api";
 import styles from "../styles/NotesPage.module.css";
@@ -10,6 +11,7 @@ import AddEditNoteDialogTEST from "./AddEditNoteDialogTEST";
 import Note from './Note';
 
 const NotesPageLoggedInView = () => {
+    const [searchTerm, setSearchTerm] = useState('');
 
     const [notes, setNotes] = useState<NoteModel[]>([]);
     const [notesLoading, setNotesLoading] = useState(true);
@@ -17,6 +19,10 @@ const NotesPageLoggedInView = () => {
 
     const [showAddNoteDialog, setShowAddNoteDialog] = useState(false);
     const [noteToEdit, setNoteToEdit] = useState<NoteModel | null>(null);
+
+    const handleSearchTermChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+        setSearchTerm(event.target.value);
+    };
 
     useEffect(() => {
         async function loadNotes() {
@@ -45,28 +51,57 @@ const NotesPageLoggedInView = () => {
         }
     }
 
-    const notesGrid =
+    // const notesGrid =
+    //     <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
+    //         {notes.map(note => (
+    //             <Col key={note._id}>
+    //                 <Note
+    //                     note={note}
+    //                     className={styles.note}
+    //                     onNoteClicked={setNoteToEdit}
+    //                     onDeleteNoteClicked={deleteNote}
+    //                 />
+    //             </Col>
+    //         ))}
+    //     </Row>
+    const notesGrid = (
         <Row xs={1} md={2} xl={3} className={`g-4 ${styles.notesGrid}`}>
-            {notes.map(note => (
-                <Col key={note._id}>
-                    <Note
-                        note={note}
-                        className={styles.note}
-                        onNoteClicked={setNoteToEdit}
-                        onDeleteNoteClicked={deleteNote}
-                    />
-                </Col>
-            ))}
+            {notes
+                .filter((note) =>
+                    note.firstname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    note.lastname.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((note) => (
+                    <Col key={note._id}>
+                        <Note
+                            note={note}
+                            className={styles.note}
+                            onNoteClicked={setNoteToEdit}
+                            onDeleteNoteClicked={deleteNote}
+                        />
+                    </Col>
+                ))}
         </Row>
-
+    );
     return (
         <>
-            <Button
-                className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
-                onClick={() => setShowAddNoteDialog(true)}>
-                <FaPlus />
-                Adaugă pacient
-            </Button>
+            <div className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}>
+                <input
+                    className={`${styles.input}`}
+                    type="text"
+                    placeholder="Caută pacient..."
+                    value={searchTerm}
+                    onChange={handleSearchTermChange}
+                />
+                <Button
+                    size='lg'
+                    className={`${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
+                    style={{ border: 'none' }}
+                    onClick={() => setShowAddNoteDialog(true)}>
+                    &#10010; Adaugă pacient
+                </Button>
+            </div>
+
             {notesLoading && <Spinner animation='border' variant='primary' />}
             {showNotesLoadingError && <p>Something went wrong. Please refresh the page.</p>}
             {!notesLoading && !showNotesLoadingError &&
