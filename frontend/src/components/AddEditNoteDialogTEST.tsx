@@ -471,7 +471,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a1"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona1) {
                                                         case '0':
@@ -496,7 +496,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -511,7 +511,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a2"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona2) {
                                                         case '0':
@@ -536,7 +536,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -551,7 +551,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a3"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona3) {
                                                         case '0':
@@ -576,7 +576,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -591,7 +591,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a4"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona4) {
                                                         case '0':
@@ -616,7 +616,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -631,7 +631,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a5"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona5) {
                                                         case '0':
@@ -656,7 +656,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                     <Stack direction="horizontal" gap={2} >
@@ -673,7 +673,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a6"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
 
                                                     switch (selectedOptiona6) {
@@ -699,7 +699,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -714,7 +714,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a7"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona7) {
                                                         case '0':
@@ -739,7 +739,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
 
                                         <section className={styles.section2}>
@@ -755,7 +755,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a8"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona8) {
                                                         case '0':
@@ -780,7 +780,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -795,7 +795,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a9"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona9) {
                                                         case '0':
@@ -820,7 +820,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -835,7 +835,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a10"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona10) {
                                                         case '0':
@@ -860,7 +860,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -875,7 +875,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a11"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona11) {
                                                         case '0':
@@ -900,7 +900,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -915,7 +915,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a12"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona12) {
                                                         case '0':
@@ -940,7 +940,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -955,7 +955,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="a13"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiona13) {
                                                         case '0':
@@ -980,7 +980,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                 </ListGroup.Item>
@@ -1001,7 +1001,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b1"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb1) {
                                                         case '0':
@@ -1026,7 +1026,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1041,7 +1041,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b2"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb2) {
                                                         case '0':
@@ -1066,7 +1066,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1081,7 +1081,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b3"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb3) {
                                                         case '0':
@@ -1106,7 +1106,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1121,7 +1121,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b4"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb4) {
                                                         case '0':
@@ -1146,7 +1146,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1161,7 +1161,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b5"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb5) {
                                                         case '0':
@@ -1186,7 +1186,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                     <Stack direction="horizontal" gap={2}>
@@ -1203,7 +1203,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b6"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
 
                                                     switch (selectedOptionb6) {
@@ -1229,7 +1229,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1244,7 +1244,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b7"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb7) {
                                                         case '0':
@@ -1269,7 +1269,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
 
                                         <section className={styles.section2}>
@@ -1285,7 +1285,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b8"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb8) {
                                                         case '0':
@@ -1310,7 +1310,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1325,7 +1325,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b9"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb9) {
                                                         case '0':
@@ -1350,7 +1350,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1365,7 +1365,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b10"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb10) {
                                                         case '0':
@@ -1390,7 +1390,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1405,7 +1405,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b11"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb11) {
                                                         case '0':
@@ -1430,7 +1430,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1445,7 +1445,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b12"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb12) {
                                                         case '0':
@@ -1470,7 +1470,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1485,7 +1485,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="b13"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionb13) {
                                                         case '0':
@@ -1510,7 +1510,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                 </ListGroup.Item>
@@ -1533,7 +1533,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c1"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc1) {
                                                         case '0':
@@ -1558,7 +1558,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1573,7 +1573,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c2"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc2) {
                                                         case '0':
@@ -1598,7 +1598,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1613,7 +1613,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c3"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc3) {
                                                         case '0':
@@ -1638,7 +1638,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1653,7 +1653,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c4"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc4) {
                                                         case '0':
@@ -1678,7 +1678,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1693,7 +1693,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c5"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc5) {
                                                         case '0':
@@ -1718,7 +1718,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1733,7 +1733,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c6"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc6) {
                                                         case '0':
@@ -1758,7 +1758,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1773,7 +1773,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c7"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc7) {
                                                         case '0':
@@ -1798,7 +1798,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -1813,7 +1813,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c8"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc8) {
                                                         case '0':
@@ -1838,7 +1838,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                     <Stack direction="horizontal" gap={2} style={{ justifyContent: 'end' }}>
@@ -1855,7 +1855,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c9"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
 
                                                     switch (selectedOptionc9) {
@@ -1881,7 +1881,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1896,7 +1896,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c10"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc10) {
                                                         case '0':
@@ -1921,7 +1921,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1936,7 +1936,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c11"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc11) {
                                                         case '0':
@@ -1961,7 +1961,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -1976,7 +1976,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c12"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc12) {
                                                         case '0':
@@ -2001,7 +2001,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -2016,7 +2016,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="c13"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptionc13) {
                                                         case '0':
@@ -2041,7 +2041,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                 </ListGroup.Item>
@@ -2063,7 +2063,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d1"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
 
                                                     switch (selectedOptiond1) {
@@ -2089,7 +2089,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2104,7 +2104,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d2"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond2) {
                                                         case '0':
@@ -2129,7 +2129,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
 
                                         <section className={styles.section1}>
@@ -2145,7 +2145,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d3"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond3) {
                                                         case '0':
@@ -2170,7 +2170,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2185,7 +2185,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d4"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond4) {
                                                         case '0':
@@ -2210,7 +2210,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2225,7 +2225,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d5"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond5) {
                                                         case '0':
@@ -2250,7 +2250,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2265,7 +2265,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d6"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond6) {
                                                         case '0':
@@ -2290,7 +2290,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2305,7 +2305,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d7"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond7) {
                                                         case '0':
@@ -2330,7 +2330,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section1}>
                                             <Controller
@@ -2345,7 +2345,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d8"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond8) {
                                                         case '0':
@@ -2370,7 +2370,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                     <Stack direction="horizontal" gap={2}>
@@ -2387,7 +2387,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d9"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
 
                                                     switch (selectedOptiond9) {
@@ -2413,7 +2413,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -2428,7 +2428,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d10"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond10) {
                                                         case '0':
@@ -2453,7 +2453,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -2468,7 +2468,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d11"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond11) {
                                                         case '0':
@@ -2493,7 +2493,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -2508,7 +2508,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d12"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond12) {
                                                         case '0':
@@ -2533,7 +2533,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                         <section className={styles.section2}>
                                             <Controller
@@ -2548,7 +2548,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                 name="d13"
                                                 control={control}
                                             />
-                                            <h1>
+                                            <h2>
                                                 {(() => {
                                                     switch (selectedOptiond13) {
                                                         case '0':
@@ -2573,7 +2573,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                                                             </Badge>
                                                     }
                                                 })()}
-                                            </h1>
+                                            </h2>
                                         </section>
                                     </Stack>
                                 </ListGroup.Item>
