@@ -24,7 +24,7 @@ const Note = ({ note, onNoteClicked, onDeleteNoteClicked, className }: NoteProps
 
     return (
         <Card
-            className={`${styles.noteCard} ${className}`}
+            className={`${styles.noteCard} ${className} border border-success`}
             onClick={() => { onNoteClicked(note) }}
         >
             <Card.Body className={styles.cardBody}>

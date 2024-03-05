@@ -1,7 +1,6 @@
 .blockCenter {
     display: block;
     margin-right: auto;
-    margin-left: auto;
 }
 
 .flexCenter {
@@ -13,4 +12,8 @@
 
 .modalWidth {
     width: 85%;
+}
+
+.blueBg {
+    background-color: #0d3efd;
 }

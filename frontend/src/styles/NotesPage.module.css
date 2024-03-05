@@ -16,24 +16,31 @@
 }
 
 .note:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 18px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .input {
-    background-color: #0D6EFD;
-    color: white;
-    padding: 8px 16px;
+    background-color: #EEF9FD;
+    color: #212529;
+    padding: 6px 18px;
     margin: 8px 2em 8px 0px;
-    border: none;
     border-radius: 6px;
     cursor: text;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .input::placeholder {
-    color: white;
+    color: #212529;
 }
 
 .input:focus-visible {
-    border: none;
+    outline-color: #198754
+}
+
+.input:focus {
+    outline-color: #198754
+}
+
+.input:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 12px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }

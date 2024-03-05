@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
 import styles from "../styles/AddEditNoteDialog.module.css";
+import styleUtils from "../styles/utils.module.css";
+
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
     onDismiss: () => void,
@@ -234,7 +236,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             aria-labelledby="example-custom-modal-styling-title"
             centered
         >
-            <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: 'rgb(13, 110, 253)', marginBottom: "2em" }}>
+            <Modal.Header closeButton closeVariant="white" style={{ color: '#fff', backgroundColor: '#0d3efd', marginBottom: "2em", fontSize: '1em' }}>
                 <Modal.Title>{noteToEdit ? "Actualizează pacient" : "Adaugă pacient"}</Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ marginBottom: "2em" }}>
@@ -2450,7 +2452,7 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             </Modal.Body >
             <Modal.Footer>
                 <Button
-                    variant="primary"
+                    className={`${styleUtils.blueBg} border-0`}
                     type="submit"
                     // this form="addNoteForm" attribute is to connect the <Button> to the <Form> above, because it lives outside.
                     // this is how you do it if you want to have the <Button> of type submit outside the <Form>.

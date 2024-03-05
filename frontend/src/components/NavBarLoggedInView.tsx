@@ -21,7 +21,7 @@ const NavBarLoggedInView = ({ user, onLogoutSuccessful }: NavBarLoggedInViewProp
 
     return (
         <>
-            <Navbar.Text className="me-2">
+            <Navbar.Text className="me-2" style={{ color: "#ffff00" }}>
                 {/* Signed in as: {user.username} */}
                 Otilia H.
             </Navbar.Text>

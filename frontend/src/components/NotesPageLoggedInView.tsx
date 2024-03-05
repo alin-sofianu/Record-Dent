@@ -1,7 +1,5 @@
 import { SetStateAction, useEffect, useState } from 'react';
-import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
-import { MdSearch } from "react-icons/md";
+import { Button, Col, Row, Spinner } from "react-bootstrap";
 import { Note as NoteModel } from '../models/note';
 import * as NotesApi from "../network/notes_api";
 import styles from "../styles/NotesPage.module.css";
@@ -85,52 +83,55 @@ const NotesPageLoggedInView = () => {
     );
     return (
         <>
-            <div className={`mb-4 ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}>
+            <div
+                style={{ paddingBottom: '12px', borderBottom: '1px solid #8D949E' }}
+                className={`mb-5 border-bottom-primary ${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
+            >
                 <input
-                    className={`${styles.input}`}
+                    className={`${styles.input} border border-success`}
                     type="text"
-                    placeholder="Caută pacient..."
+                    placeholder=" Caută pacient..."
                     value={searchTerm}
                     onChange={handleSearchTermChange}
                 />
                 <Button
-                    size='lg'
-                    className={`${styleUtils.blockCenter} ${styleUtils.flexCenter}`}
-                    style={{ border: 'none' }}
+                    className={`${styleUtils.blockCenter} ${styleUtils.flexCenter} ${styleUtils.blueBg} border-0`}
                     onClick={() => setShowAddNoteDialog(true)}>
                     &#10010; Adaugă pacient
                 </Button>
-            </div>
 
-            {notesLoading && <Spinner animation='border' variant='primary' />}
-            {showNotesLoadingError && <p>Something went wrong. Please refresh the page.</p>}
-            {!notesLoading && !showNotesLoadingError &&
-                <>
-                    {notes.length > 0
-                        ? notesGrid
-                        : <p>You don't have any notes yet</p>
-                    }
-                </>
-            }
-            {showAddNoteDialog &&
-                <AddEditNoteDialogTEST
-                    onDismiss={() => setShowAddNoteDialog(false)}
-                    onNoteSaved={(newNote) => {
-                        setNotes([...notes, newNote]);
-                        setShowAddNoteDialog(false);
-                    }}
-                />
-            }
-            {noteToEdit &&
-                <AddEditNoteDialogTEST
-                    noteToEdit={noteToEdit}
-                    onDismiss={() => setNoteToEdit(null)}
-                    onNoteSaved={(updatedNote) => {
-                        setNotes(notes.map(existingNote => existingNote._id === updatedNote._id ? updatedNote : existingNote));
-                        setNoteToEdit(null);
-                    }}
-                />
-            }
+            </div>
+            <div>
+                {notesLoading && <Spinner animation='border' variant='primary' />}
+                {showNotesLoadingError && <p>Something went wrong. Please refresh the page.</p>}
+                {!notesLoading && !showNotesLoadingError &&
+                    <>
+                        {notes.length > 0
+                            ? notesGrid
+                            : <p>You don't have any notes yet</p>
+                        }
+                    </>
+                }
+                {showAddNoteDialog &&
+                    <AddEditNoteDialogTEST
+                        onDismiss={() => setShowAddNoteDialog(false)}
+                        onNoteSaved={(newNote) => {
+                            setNotes([...notes, newNote]);
+                            setShowAddNoteDialog(false);
+                        }}
+                    />
+                }
+                {noteToEdit &&
+                    <AddEditNoteDialogTEST
+                        noteToEdit={noteToEdit}
+                        onDismiss={() => setNoteToEdit(null)}
+                        onNoteSaved={(updatedNote) => {
+                            setNotes(notes.map(existingNote => existingNote._id === updatedNote._id ? updatedNote : existingNote));
+                            setNoteToEdit(null);
+                        }}
+                    />
+                }
+            </div>
         </>
     );
 }

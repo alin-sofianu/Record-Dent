@@ -4,6 +4,7 @@ import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png"
+import styleUtils from "../styles/utils.module.css";
 
 interface NavBarProps {
     loggedInUser: User | null,
@@ -14,7 +15,7 @@ interface NavBarProps {
 
 const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccessful }: NavBarProps) => {
     return (
-        <Navbar bg="primary" variant="dark" expand="sm" sticky="top" className="mb-5">
+        <Navbar variant="dark" expand="sm" sticky="top" className={`mb-5 ${styleUtils.blueBg}`}>
             <Container>
                 <Navbar.Brand as={Link} to="/" style={{ display: 'flex' }}>
                     <img src={logo} alt="logo" width={35} height={35} />
