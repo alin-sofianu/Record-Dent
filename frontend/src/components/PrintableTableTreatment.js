@@ -7,8 +7,6 @@ const PrintableTableTreatment = () => {
         { id: 1, no: '', date: '', tooth:'', trat: '', obs:'' },
         { id: 2, no: '', date: '', tooth:'', trat: '', obs:'' },
         { id: 3, no: '', date: '', tooth:'', trat: '', obs:'' },
-        { id: 4, no: '', date: '', tooth:'', trat: '', obs:'' },
-        { id: 5, no: '', date: '', tooth:'', trat: '', obs:'' },
         // Add more rows as needed
     ]);
 

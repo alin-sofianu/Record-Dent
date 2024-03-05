@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { Form, Modal, Button, Col, Container, Row } from "react-bootstrap";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Note } from "../models/note";
@@ -9,8 +10,8 @@ import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
 import styles from "../styles/AddEditNoteDialog.module.css";
 import styleUtils from "../styles/utils.module.css";
-import PrintableTableDiagnostic from './PrintableTableDiagnostic';
-import PrintableTableTreatment from './PrintableTableTreatment';
+import { useReactToPrint } from 'react-to-print';
+import React from "react";
 
 interface AddEditNoteDialogProps {
     noteToEdit?: Note,
@@ -139,6 +140,128 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             d11: noteToEdit?.d11 || "",
             d12: noteToEdit?.d12 || "",
             d13: noteToEdit?.d13 || "",
+
+            tooth1a: noteToEdit?.tooth1a || "",
+            tooth1b: noteToEdit?.tooth1b || "",
+            tooth1c: noteToEdit?.tooth1c || "",
+            tooth2b: noteToEdit?.tooth2b || "",
+            tooth2c: noteToEdit?.tooth2c || "",
+            tooth2a: noteToEdit?.tooth2a || "",
+            tooth3b: noteToEdit?.tooth3b || "",
+            tooth3c: noteToEdit?.tooth3c || "",
+            tooth3a: noteToEdit?.tooth3a || "",
+            tooth4b: noteToEdit?.tooth4b || "",
+            tooth4c: noteToEdit?.tooth4c || "",
+            tooth4a: noteToEdit?.tooth4a || "",
+            tooth5b: noteToEdit?.tooth5b || "",
+            tooth5c: noteToEdit?.tooth5c || "",
+            tooth5a: noteToEdit?.tooth5a || "",
+            tooth6b: noteToEdit?.tooth6b || "",
+            tooth6c: noteToEdit?.tooth6c || "",
+            tooth6a: noteToEdit?.tooth6a || "",
+            tooth7b: noteToEdit?.tooth7b || "",
+            tooth7c: noteToEdit?.tooth7c || "",
+            tooth7a: noteToEdit?.tooth7a || "",
+            tooth8b: noteToEdit?.tooth8b || "",
+            tooth8c: noteToEdit?.tooth8c || "",
+            tooth8a: noteToEdit?.tooth8a || "",
+            tooth9b: noteToEdit?.tooth9b || "",
+            tooth9c: noteToEdit?.tooth9c || "",
+            tooth9a: noteToEdit?.tooth9a || "",
+            tooth10a: noteToEdit?.tooth10a || "",
+            tooth10b: noteToEdit?.tooth10b || "",
+            tooth10c: noteToEdit?.tooth10c || "",
+            tooth11a: noteToEdit?.tooth11a || "",
+            tooth11b: noteToEdit?.tooth11b || "",
+            tooth11c: noteToEdit?.tooth11c || "",
+            tooth12b: noteToEdit?.tooth12b || "",
+            tooth12c: noteToEdit?.tooth12c || "",
+            tooth12a: noteToEdit?.tooth12a || "",
+            tooth13b: noteToEdit?.tooth13b || "",
+            tooth13c: noteToEdit?.tooth13c || "",
+            tooth13a: noteToEdit?.tooth13a || "",
+            tooth14b: noteToEdit?.tooth14b || "",
+            tooth14c: noteToEdit?.tooth14c || "",
+            tooth14a: noteToEdit?.tooth14a || "",
+            tooth15b: noteToEdit?.tooth15b || "",
+            tooth15c: noteToEdit?.tooth15c || "",
+            tooth15a: noteToEdit?.tooth15a || "",
+            tooth16b: noteToEdit?.tooth16b || "",
+            tooth16c: noteToEdit?.tooth16c || "",
+            tooth16a: noteToEdit?.tooth16a || "",
+            tooth17b: noteToEdit?.tooth17b || "",
+            tooth17c: noteToEdit?.tooth17c || "",
+            tooth17a: noteToEdit?.tooth17a || "",
+            tooth18b: noteToEdit?.tooth18b || "",
+            tooth18c: noteToEdit?.tooth18c || "",
+            tooth18a: noteToEdit?.tooth18a || "",
+            tooth19b: noteToEdit?.tooth19b || "",
+            tooth19c: noteToEdit?.tooth19c || "",
+            tooth19a: noteToEdit?.tooth19a || "",
+            tooth20a: noteToEdit?.tooth20a || "",
+            tooth20b: noteToEdit?.tooth20b || "",
+            tooth20c: noteToEdit?.tooth20c || "",
+            tooth21a: noteToEdit?.tooth21a || "",
+            tooth21b: noteToEdit?.tooth21b || "",
+            tooth21c: noteToEdit?.tooth21c || "",
+            tooth22b: noteToEdit?.tooth22b || "",
+            tooth22c: noteToEdit?.tooth22c || "",
+            tooth22a: noteToEdit?.tooth22a || "",
+            tooth23b: noteToEdit?.tooth23b || "",
+            tooth23c: noteToEdit?.tooth23c || "",
+            tooth23a: noteToEdit?.tooth23a || "",
+            tooth24b: noteToEdit?.tooth24b || "",
+            tooth24c: noteToEdit?.tooth24c || "",
+            tooth24a: noteToEdit?.tooth24a || "",
+            tooth25b: noteToEdit?.tooth25b || "",
+            tooth25c: noteToEdit?.tooth25c || "",
+            tooth25a: noteToEdit?.tooth25a || "",
+            tooth26b: noteToEdit?.tooth26b || "",
+            tooth26c: noteToEdit?.tooth26c || "",
+            tooth26a: noteToEdit?.tooth26a || "",
+            tooth27b: noteToEdit?.tooth27b || "",
+            tooth27c: noteToEdit?.tooth27c || "",
+            tooth27a: noteToEdit?.tooth27a || "",
+            tooth28b: noteToEdit?.tooth28b || "",
+            tooth28c: noteToEdit?.tooth28c || "",
+            tooth28a: noteToEdit?.tooth28a || "",
+            tooth29b: noteToEdit?.tooth29b || "",
+            tooth29c: noteToEdit?.tooth29c || "",
+            tooth29a: noteToEdit?.tooth29a || "",
+            tooth30a: noteToEdit?.tooth30a || "",
+            tooth30b: noteToEdit?.tooth30b || "",
+            tooth30c: noteToEdit?.tooth30c || "",
+            tooth31a: noteToEdit?.tooth31a || "",
+            tooth31b: noteToEdit?.tooth31b || "",
+            tooth31c: noteToEdit?.tooth31c || "",
+            tooth32a: noteToEdit?.tooth32a || "",
+            tooth32b: noteToEdit?.tooth32b || "",
+            tooth32c: noteToEdit?.tooth32c || "",
+            tooth33a: noteToEdit?.tooth33a || "",
+            tooth33b: noteToEdit?.tooth33b || "",
+            tooth33c: noteToEdit?.tooth33c || "",
+
+            treat1a: noteToEdit?.treat1a || "",
+            treat1b: noteToEdit?.treat1b || "",
+            treat1c: noteToEdit?.treat1c || "",
+            treat1d: noteToEdit?.treat1d || "",
+            treat2a: noteToEdit?.treat2a || "",
+            treat2b: noteToEdit?.treat2b || "",
+            treat2c: noteToEdit?.treat2c || "",
+            treat2d: noteToEdit?.treat2d || "",
+            treat3a: noteToEdit?.treat3a || "",
+            treat3b: noteToEdit?.treat3b || "",
+            treat3c: noteToEdit?.treat3c || "",
+            treat3d: noteToEdit?.treat3d || "",
+            treat4a: noteToEdit?.treat4a || "",
+            treat4b: noteToEdit?.treat4b || "",
+            treat4c: noteToEdit?.treat4c || "",
+            treat4d: noteToEdit?.treat4d || "",
+            treat5a: noteToEdit?.treat5a || "",
+            treat5b: noteToEdit?.treat5b || "",
+            treat5c: noteToEdit?.treat5c || "",
+            treat5d: noteToEdit?.treat5d || "",
+
             currentColor: noteToEdit?.currentColor || "",
             currentColorIndex: noteToEdit?.currentColorIndex || "",
             control: noteToEdit?.control || "",
@@ -146,6 +269,17 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             select: noteToEdit?.select || "",
 
         }
+    });
+
+    const printRef = React.createRef<HTMLTableElement>();
+    const printRef2 = React.createRef<HTMLTableElement>();
+
+    const handlePrint = useReactToPrint({
+        content: () => printRef.current,
+    });
+
+    const handlePrint2 = useReactToPrint({
+        content: () => printRef2.current,
     });
 
     // Set initial value when the component mounts
@@ -225,8 +359,6 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
             alert(error)
         }
     }
-
-
 
     return (
         // here onHide={onDismiss} is a shorthand for onHide={() => onDismiss}
@@ -2449,8 +2581,847 @@ const AddNoteDialog = ({ noteToEdit, onDismiss, onNoteSaved }: AddEditNoteDialog
                         </Container>
                     </div>
 
-                    <PrintableTableDiagnostic />
-                    <PrintableTableTreatment />
+                    <div>
+                        <table ref={printRef}>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Dinte</th>
+                                    <th>Diagnoza</th>
+                                    <th>Tratat/Netratat.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth1a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth1b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth1c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth2a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth2b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth2c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth3a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth3b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth3c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth4a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth4b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth4c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth5a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth5b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth5c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth6a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth6b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth6c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth7a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth7b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth7c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth8a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth8b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth8c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth9a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth9b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth9c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth10a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth10b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth10c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth11a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth11b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth11c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth12a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth12b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth12c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth13a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth13b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth13c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth14a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth14b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth14c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth15a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth15b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth15c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth16a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth16b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth16c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth17a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth17b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth17c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth18a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth18b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth18c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth19a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth19b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth19c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth20a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth20b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth20c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth21a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth21b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth21c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth22a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth22b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth22c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth23a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth23b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth23c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth24a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth24b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth24c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth25a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth25b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth25c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth26a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth26b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth26c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth27a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth27b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth27c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth28a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth28b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth28c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth29a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth29b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth29c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth30a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth30b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth30c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth31a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth31b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth31c")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth32a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth32b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("tooth32c")}
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <Button onClick={handlePrint}>Printează</Button>
+                    </div>
+                    <div>
+                        <table ref={printRef2}>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Data</th>
+                                    <th>Dinte</th>
+                                    <th>Tratatament</th>
+                                    <th>Observatii</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat1a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat1b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat1c")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat1d")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat2a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat2b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat2c")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat2d")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat3a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat3b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat3c")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat3d")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat4a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat4b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat4c")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat4d")}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat5a")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat5b")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat5c")}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            {...register("treat5d")}
+                                        />
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <Button onClick={handlePrint2}>Printează</Button>
+                    </div>
                 </Form >
             </Modal.Body >
             <Modal.Footer>
