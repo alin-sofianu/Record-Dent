@@ -18,9 +18,9 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
         }
     }
 }
-///////////////////////////
-// start of users stuff
-///////////////////////////
+//////////////////////////
+// start of users stuff //
+//////////////////////////
 export async function getLoggedInUser(): Promise<User> {
     const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET", credentials: "include" });
     // const response = await fetchData("/api/users", { method: "GET", credentials: "include" });
@@ -69,9 +69,9 @@ export async function logout() {
     await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST", credentials: "include" });
     // await fetchData("/api/users/logout", { method: "POST", credentials: "include" });
 }
-///////////////////////////
-// end of user stuff
-///////////////////////////
+///////////////////////
+// end of user stuff //
+///////////////////////
 export async function fetchNotes(): Promise<Note[]> {
     const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
     // const response = await fetchData("/api/notes", { method: "GET", credentials: "include" })
