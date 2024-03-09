@@ -73,8 +73,8 @@ export async function logout() {
 // end of user stuff //
 ///////////////////////
 export async function fetchNotes(): Promise<Note[]> {
-    // const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
-    const response = await fetchData("/api/notes", { method: "GET", credentials: "include" })
+    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
+    // const response = await fetchData("/api/notes", { method: "GET", credentials: "include" })
 
     // this means return the json body of the response
     return response.json()
