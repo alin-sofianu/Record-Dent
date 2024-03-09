@@ -226,6 +226,69 @@ interface CreateNoteBody {
     treat5c?: string,
     treat5d?: string,
 
+    treat6a?: string,
+    treat6b?: string,
+    treat6c?: string,
+    treat6d?: string,
+    treat7a?: string,
+    treat7b?: string,
+    treat7c?: string,
+    treat7d?: string,
+    treat8a?: string,
+    treat8b?: string,
+    treat8c?: string,
+    treat8d?: string,
+    treat9a?: string,
+    treat9b?: string,
+    treat9c?: string,
+    treat9d?: string,
+    treat10a?: string,
+    treat10b?: string,
+    treat10c?: string,
+    treat10d?: string,
+
+    treat11a?: string,
+    treat11b?: string,
+    treat11c?: string,
+    treat11d?: string,
+    treat12a?: string,
+    treat12b?: string,
+    treat12c?: string,
+    treat12d?: string,
+    treat13a?: string,
+    treat13b?: string,
+    treat13c?: string,
+    treat13d?: string,
+    treat14a?: string,
+    treat14b?: string,
+    treat14c?: string,
+    treat14d?: string,
+    treat15a?: string,
+    treat15b?: string,
+    treat15c?: string,
+    treat15d?: string,
+
+    treat16a?: string,
+    treat16b?: string,
+    treat16c?: string,
+    treat16d?: string,
+    treat17a?: string,
+    treat17b?: string,
+    treat17c?: string,
+    treat17d?: string,
+    treat18a?: string,
+    treat18b?: string,
+    treat18c?: string,
+    treat18d?: string,
+    treat19a?: string,
+    treat19b?: string,
+    treat19c?: string,
+    treat19d?: string,
+    treat20a?: string,
+    treat20b?: string,
+    treat20c?: string,
+    treat20d?: string,
+
     currentColor?: string,
     currentColorIndex?: string,
     control?: string,
@@ -422,6 +485,67 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
     const treat5b = req.body.treat5b
     const treat5c = req.body.treat5c
     const treat5d = req.body.treat5d
+
+    const treat6a = req.body.treat6a
+    const treat6b = req.body.treat6b
+    const treat6c = req.body.treat6c
+    const treat6d = req.body.treat6d
+    const treat7a = req.body.treat7a
+    const treat7b = req.body.treat7b
+    const treat7c = req.body.treat7c
+    const treat7d = req.body.treat7d
+    const treat8a = req.body.treat8a
+    const treat8b = req.body.treat8b
+    const treat8c = req.body.treat8c
+    const treat8d = req.body.treat8d
+    const treat9a = req.body.treat9a
+    const treat9b = req.body.treat9b
+    const treat9c = req.body.treat9c
+    const treat9d = req.body.treat9d
+    const treat10a = req.body.treat10a
+    const treat10b = req.body.treat10b
+    const treat10c = req.body.treat10c
+    const treat10d = req.body.treat10d
+    const treat11a = req.body.treat11a
+    const treat11b = req.body.treat11b
+    const treat11c = req.body.treat11c
+    const treat11d = req.body.treat11d
+    const treat12a = req.body.treat12a
+    const treat12b = req.body.treat12b
+    const treat12c = req.body.treat12c
+    const treat12d = req.body.treat12d
+    const treat13a = req.body.treat13a
+    const treat13b = req.body.treat13b
+    const treat13c = req.body.treat13c
+    const treat13d = req.body.treat13d
+    const treat14a = req.body.treat14a
+    const treat14b = req.body.treat14b
+    const treat14c = req.body.treat14c
+    const treat14d = req.body.treat14d
+    const treat15a = req.body.treat15a
+    const treat15b = req.body.treat15b
+    const treat15c = req.body.treat15c
+    const treat15d = req.body.treat15d
+    const treat16a = req.body.treat16a
+    const treat16b = req.body.treat16b
+    const treat16c = req.body.treat16c
+    const treat16d = req.body.treat16d
+    const treat17a = req.body.treat17a
+    const treat17b = req.body.treat17b
+    const treat17c = req.body.treat17c
+    const treat17d = req.body.treat17d
+    const treat18a = req.body.treat18a
+    const treat18b = req.body.treat18b
+    const treat18c = req.body.treat18c
+    const treat18d = req.body.treat18d
+    const treat19a = req.body.treat19a
+    const treat19b = req.body.treat19b
+    const treat19c = req.body.treat19c
+    const treat19d = req.body.treat19d
+    const treat20a = req.body.treat20a
+    const treat20b = req.body.treat20b
+    const treat20c = req.body.treat20c
+    const treat20d = req.body.treat20d
 
     const currentColor = req.body.currentColor
     const currentColorIndex = req.body.currentColorIndex
@@ -622,6 +746,67 @@ export const createNote: RequestHandler<unknown, unknown, CreateNoteBody, unknow
             treat5c: treat5c,
             treat5d: treat5d,
 
+            treat6a: treat6a,
+            treat6b: treat6b,
+            treat6c: treat6c,
+            treat6d: treat6d,
+            treat7a: treat7a,
+            treat7b: treat7b,
+            treat7c: treat7c,
+            treat7d: treat7d,
+            treat8a: treat8a,
+            treat8b: treat8b,
+            treat8c: treat8c,
+            treat8d: treat8d,
+            treat9a: treat9a,
+            treat9b: treat9b,
+            treat9c: treat9c,
+            treat9d: treat9d,
+            treat10a: treat10a,
+            treat10b: treat10b,
+            treat10c: treat10c,
+            treat10d: treat10d,
+            treat11a: treat11a,
+            treat11b: treat11b,
+            treat11c: treat11c,
+            treat11d: treat11d,
+            treat12a: treat12a,
+            treat12b: treat12b,
+            treat12c: treat12c,
+            treat12d: treat12d,
+            treat13a: treat13a,
+            treat13b: treat13b,
+            treat13c: treat13c,
+            treat13d: treat13d,
+            treat14a: treat14a,
+            treat14b: treat14b,
+            treat14c: treat14c,
+            treat14d: treat14d,
+            treat15a: treat15a,
+            treat15b: treat15b,
+            treat15c: treat15c,
+            treat15d: treat15d,
+            treat16a: treat16a,
+            treat16b: treat16b,
+            treat16c: treat16c,
+            treat16d: treat16d,
+            treat17a: treat17a,
+            treat17b: treat17b,
+            treat17c: treat17c,
+            treat17d: treat17d,
+            treat18a: treat18a,
+            treat18b: treat18b,
+            treat18c: treat18c,
+            treat18d: treat18d,
+            treat19a: treat19a,
+            treat19b: treat19b,
+            treat19c: treat19c,
+            treat19d: treat19d,
+            treat20a: treat20a,
+            treat20b: treat20b,
+            treat20c: treat20c,
+            treat20d: treat20d,
+
             currentColor: currentColor,
             currentColorIndex: currentColorIndex,
             control: control,
@@ -821,6 +1006,67 @@ interface updateNoteBody {
     treat5c?: string,
     treat5d?: string,
 
+    treat6a?: string,
+    treat6b?: string,
+    treat6c?: string,
+    treat6d?: string,
+    treat7a?: string,
+    treat7b?: string,
+    treat7c?: string,
+    treat7d?: string,
+    treat8a?: string,
+    treat8b?: string,
+    treat8c?: string,
+    treat8d?: string,
+    treat9a?: string,
+    treat9b?: string,
+    treat9c?: string,
+    treat9d?: string,
+    treat10a?: string,
+    treat10b?: string,
+    treat10c?: string,
+    treat10d?: string,
+    treat11a?: string,
+    treat11b?: string,
+    treat11c?: string,
+    treat11d?: string,
+    treat12a?: string,
+    treat12b?: string,
+    treat12c?: string,
+    treat12d?: string,
+    treat13a?: string,
+    treat13b?: string,
+    treat13c?: string,
+    treat13d?: string,
+    treat14a?: string,
+    treat14b?: string,
+    treat14c?: string,
+    treat14d?: string,
+    treat15a?: string,
+    treat15b?: string,
+    treat15c?: string,
+    treat15d?: string,
+    treat16a?: string,
+    treat16b?: string,
+    treat16c?: string,
+    treat16d?: string,
+    treat17a?: string,
+    treat17b?: string,
+    treat17c?: string,
+    treat17d?: string,
+    treat18a?: string,
+    treat18b?: string,
+    treat18c?: string,
+    treat18d?: string,
+    treat19a?: string,
+    treat19b?: string,
+    treat19c?: string,
+    treat19d?: string,
+    treat20a?: string,
+    treat20b?: string,
+    treat20c?: string,
+    treat20d?: string,
+
     currentColor?: string,
     currentColorIndex?: string,
     control?: string,
@@ -1016,6 +1262,67 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
     const newTreat5b = req.body.treat5b
     const newTreat5c = req.body.treat5c
     const newTreat5d = req.body.treat5d
+
+    const newTreat6a = req.body.treat6a
+    const newTreat6b = req.body.treat6b
+    const newTreat6c = req.body.treat6c
+    const newTreat6d = req.body.treat6d
+    const newTreat7a = req.body.treat7a
+    const newTreat7b = req.body.treat7b
+    const newTreat7c = req.body.treat7c
+    const newTreat7d = req.body.treat7d
+    const newTreat8a = req.body.treat8a
+    const newTreat8b = req.body.treat8b
+    const newTreat8c = req.body.treat8c
+    const newTreat8d = req.body.treat8d
+    const newTreat9a = req.body.treat9a
+    const newTreat9b = req.body.treat9b
+    const newTreat9c = req.body.treat9c
+    const newTreat9d = req.body.treat9d
+    const newTreat10a = req.body.treat10a
+    const newTreat10b = req.body.treat10b
+    const newTreat10c = req.body.treat10c
+    const newTreat10d = req.body.treat10d
+    const newTreat11a = req.body.treat11a
+    const newTreat11b = req.body.treat11b
+    const newTreat11c = req.body.treat11c
+    const newTreat11d = req.body.treat11d
+    const newTreat12a = req.body.treat12a
+    const newTreat12b = req.body.treat12b
+    const newTreat12c = req.body.treat12c
+    const newTreat12d = req.body.treat12d
+    const newTreat13a = req.body.treat13a
+    const newTreat13b = req.body.treat13b
+    const newTreat13c = req.body.treat13c
+    const newTreat13d = req.body.treat13d
+    const newTreat14a = req.body.treat14a
+    const newTreat14b = req.body.treat14b
+    const newTreat14c = req.body.treat14c
+    const newTreat14d = req.body.treat14d
+    const newTreat15a = req.body.treat15a
+    const newTreat15b = req.body.treat15b
+    const newTreat15c = req.body.treat15c
+    const newTreat15d = req.body.treat15d
+    const newTreat16a = req.body.treat16a
+    const newTreat16b = req.body.treat16b
+    const newTreat16c = req.body.treat16c
+    const newTreat16d = req.body.treat16d
+    const newTreat17a = req.body.treat17a
+    const newTreat17b = req.body.treat17b
+    const newTreat17c = req.body.treat17c
+    const newTreat17d = req.body.treat17d
+    const newTreat18a = req.body.treat18a
+    const newTreat18b = req.body.treat18b
+    const newTreat18c = req.body.treat18c
+    const newTreat18d = req.body.treat18d
+    const newTreat19a = req.body.treat19a
+    const newTreat19b = req.body.treat19b
+    const newTreat19c = req.body.treat19c
+    const newTreat19d = req.body.treat19d
+    const newTreat20a = req.body.treat20a
+    const newTreat20b = req.body.treat20b
+    const newTreat20c = req.body.treat20c
+    const newTreat20d = req.body.treat20d
 
     const newCurrentColor = req.body.currentColor
     const newCurrentColorIndex = req.body.currentColorIndex
@@ -1218,6 +1525,67 @@ export const updateNote: RequestHandler<updateNoteParams, unknown, updateNoteBod
         note.treat5b = newTreat5b;
         note.treat5c = newTreat5c;
         note.treat5d = newTreat5d;
+
+        note.treat6a = newTreat6a;
+        note.treat6b = newTreat6b;
+        note.treat6c = newTreat6c;
+        note.treat6d = newTreat6d;
+        note.treat7a = newTreat7a;
+        note.treat7b = newTreat7b;
+        note.treat7c = newTreat7c;
+        note.treat7d = newTreat7d;
+        note.treat8a = newTreat8a;
+        note.treat8b = newTreat8b;
+        note.treat8c = newTreat8c;
+        note.treat8d = newTreat8d;
+        note.treat9a = newTreat9a;
+        note.treat9b = newTreat9b;
+        note.treat9c = newTreat9c;
+        note.treat9d = newTreat9d;
+        note.treat10a = newTreat10a;
+        note.treat10b = newTreat10b;
+        note.treat10c = newTreat10c;
+        note.treat10d = newTreat10d;
+        note.treat11a = newTreat11a;
+        note.treat11b = newTreat11b;
+        note.treat11c = newTreat11c;
+        note.treat11d = newTreat11d;
+        note.treat12a = newTreat12a;
+        note.treat12b = newTreat12b;
+        note.treat12c = newTreat12c;
+        note.treat12d = newTreat12d;
+        note.treat13a = newTreat13a;
+        note.treat13b = newTreat13b;
+        note.treat13c = newTreat13c;
+        note.treat13d = newTreat13d;
+        note.treat14a = newTreat14a;
+        note.treat14b = newTreat14b;
+        note.treat14c = newTreat14c;
+        note.treat14d = newTreat14d;
+        note.treat15a = newTreat15a;
+        note.treat15b = newTreat15b;
+        note.treat15c = newTreat15c;
+        note.treat15d = newTreat15d;
+        note.treat16a = newTreat16a;
+        note.treat16b = newTreat16b;
+        note.treat16c = newTreat16c;
+        note.treat16d = newTreat16d;
+        note.treat17a = newTreat17a;
+        note.treat17b = newTreat17b;
+        note.treat17c = newTreat17c;
+        note.treat17d = newTreat17d;
+        note.treat18a = newTreat18a;
+        note.treat18b = newTreat18b;
+        note.treat18c = newTreat18c;
+        note.treat18d = newTreat18d;
+        note.treat19a = newTreat19a;
+        note.treat19b = newTreat19b;
+        note.treat19c = newTreat19c;
+        note.treat19d = newTreat19d;
+        note.treat20a = newTreat20a;
+        note.treat20b = newTreat20b;
+        note.treat20c = newTreat20c;
+        note.treat20d = newTreat20d;
 
         note.currentColor = newCurrentColor;
         note.currentColorIndex = newCurrentColorIndex;

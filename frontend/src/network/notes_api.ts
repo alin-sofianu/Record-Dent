@@ -22,8 +22,8 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 // start of users stuff //
 //////////////////////////
 export async function getLoggedInUser(): Promise<User> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET", credentials: "include" });
-    // const response = await fetchData("/api/users", { method: "GET", credentials: "include" });
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/users", { method: "GET", credentials: "include" });
+    const response = await fetchData("/api/users", { method: "GET", credentials: "include" });
     return response.json();
 }
 
@@ -34,8 +34,8 @@ export interface SignUpCredentials {
 }
 
 export async function signUp(credentials: SignUpCredentials): Promise<User> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/users/signup",
-        // const response = await fetchData("/api/users/signup",
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/users/signup",
+    const response = await fetchData("/api/users/signup",
         {
             method: "POST",
             headers: {
@@ -52,8 +52,8 @@ export interface LoginCredentials {
 }
 
 export async function login(credentials: LoginCredentials): Promise<User> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/users/login",
-        // const response = await fetchData("/api/users/login",
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/users/login",
+    const response = await fetchData("/api/users/login",
         {
             method: "POST",
             headers: {
@@ -66,15 +66,15 @@ export async function login(credentials: LoginCredentials): Promise<User> {
 }
 
 export async function logout() {
-    await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST", credentials: "include" });
-    // await fetchData("/api/users/logout", { method: "POST", credentials: "include" });
+    // await fetchData("https://record-dent-backend.onrender.com/api/users/logout", { method: "POST", credentials: "include" });
+    await fetchData("/api/users/logout", { method: "POST", credentials: "include" });
 }
 ///////////////////////
 // end of user stuff //
 ///////////////////////
 export async function fetchNotes(): Promise<Note[]> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
-    // const response = await fetchData("/api/notes", { method: "GET", credentials: "include" })
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/notes", { method: "GET", credentials: "include" })
+    const response = await fetchData("/api/notes", { method: "GET", credentials: "include" })
 
     // this means return the json body of the response
     return response.json()
@@ -262,6 +262,67 @@ export interface NoteInput {
     treat5c?: string,
     treat5d?: string,
 
+    treat6a?: string,
+    treat6b?: string,
+    treat6c?: string,
+    treat6d?: string,
+    treat7a?: string,
+    treat7b?: string,
+    treat7c?: string,
+    treat7d?: string,
+    treat8a?: string,
+    treat8b?: string,
+    treat8c?: string,
+    treat8d?: string,
+    treat9a?: string,
+    treat9b?: string,
+    treat9c?: string,
+    treat9d?: string,
+    treat10a?: string,
+    treat10b?: string,
+    treat10c?: string,
+    treat10d?: string,
+    treat11a?: string,
+    treat11b?: string,
+    treat11c?: string,
+    treat11d?: string,
+    treat12a?: string,
+    treat12b?: string,
+    treat12c?: string,
+    treat12d?: string,
+    treat13a?: string,
+    treat13b?: string,
+    treat13c?: string,
+    treat13d?: string,
+    treat14a?: string,
+    treat14b?: string,
+    treat14c?: string,
+    treat14d?: string,
+    treat15a?: string,
+    treat15b?: string,
+    treat15c?: string,
+    treat15d?: string,
+    treat16a?: string,
+    treat16b?: string,
+    treat16c?: string,
+    treat16d?: string,
+    treat17a?: string,
+    treat17b?: string,
+    treat17c?: string,
+    treat17d?: string,
+    treat18a?: string,
+    treat18b?: string,
+    treat18c?: string,
+    treat18d?: string,
+    treat19a?: string,
+    treat19b?: string,
+    treat19c?: string,
+    treat19d?: string,
+    treat20a?: string,
+    treat20b?: string,
+    treat20c?: string,
+    treat20d?: string,
+
     currentColor?: string,
     currentColorIndex?: string,
     control?: string,
@@ -271,8 +332,8 @@ export interface NoteInput {
 
 export async function createNote(note: NoteInput): Promise<Note> {
 
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes",
-        // const response = await fetchData("/api/notes",
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/notes",
+    const response = await fetchData("/api/notes",
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -283,8 +344,8 @@ export async function createNote(note: NoteInput): Promise<Note> {
 }
 
 export async function updateNote(noteId: String, note: NoteInput): Promise<Note> {
-    const response = await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId,
-        // const response = await fetchData("/api/notes/" + noteId,
+    // const response = await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId,
+    const response = await fetchData("/api/notes/" + noteId,
         {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -295,8 +356,8 @@ export async function updateNote(noteId: String, note: NoteInput): Promise<Note>
 }
 
 export async function deleteNote(noteId: string) {
-    await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId, {
-        // await fetchData("/api/notes/" + noteId, {
+    // await fetchData("https://record-dent-backend.onrender.com/api/notes/" + noteId, {
+    await fetchData("/api/notes/" + noteId, {
         method: "DELETE",
         credentials: "include"
     })

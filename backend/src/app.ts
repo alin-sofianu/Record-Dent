@@ -8,23 +8,23 @@ import session from "express-session";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
-import cors from "cors";
+// import cors from "cors";
 
 const app = express();
 
-const corsOptions = {
-    origin: 'https://record-dent.onrender.com',
-    optionsSuccessStatus: 200,
-    credentials: true
-};
+// const corsOptions = {
+//     origin: 'https://record-dent.onrender.com',
+//     optionsSuccessStatus: 200,
+//     credentials: true
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.set('trust proxy', 1) // trust first proxy
+// app.set('trust proxy', 1) // trust first proxy
 
 app.use(session({
     secret: env.SESSION_SECRET,
@@ -32,8 +32,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         maxAge: 60 * 60 * 1000,
-        secure: true,
-        sameSite: 'none',
+        // secure: true,
+        // sameSite: 'none',
     },
     rolling: true,
     store: MongoStore.create({

@@ -17,3 +17,34 @@
 .blueBg {
     background-color: #0d3efd;
 }
+
+
+table {
+    border: none;
+    border-collapse: collapse;
+    caption-side: top;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+tr:nth-child(odd) input {
+    background-color: #f2f2f2;
+    border-style: double;
+    border-width: 1px;
+}
+
+tr:nth-child(even) input {
+    border-style: double;
+    border-width: 1px;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 16px;
+}
